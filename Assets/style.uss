@@ -15,6 +15,11 @@
     height: auto;
 }
 
+.word-label {
+    font-size: 87px;
+    -unity-text-align: upper-center;
+}
+
 .key-board {
 }
 
@@ -25,20 +30,240 @@
     justify-content: flex-start;
 }
 
-.input-lettre > .a, .input-lettre > .b, .input-lettre > .c, .input-lettre > .d,
-.input-lettre > .e, .input-lettre > .f, .input-lettre > .g, .input-lettre > .h, .input-lettre > .i,
-.input-lettre > .j, .input-lettre > .k, .input-lettre > .l, .input-lettre > .m, .input-lettre > .n,
-.input-lettre > .o, .input-lettre > .p, .input-lettre > .q, .input-lettre > .r, .input-lettre > .s,
-.input-lettre > .t, .input-lettre > .u, .input-lettre > .v, .input-lettre > .w, .input-lettre > .x,
-.input-lettre > .y, .input-lettre > .z {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
+.input-lettre > .a {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
     padding: 10px;
     margin: 5px;
+    -unity-font-style: bold;
 }
 
-/* Add the default style for all buttons */
+.input-lettre > .b {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .c {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .d {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .e {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .f {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .g {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .h {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .i {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .j {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .k {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .l {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .m {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .n {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .o {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .p {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .q {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .r {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .s {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .t {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .u {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .v {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .w {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .x {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .y {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
+.input-lettre > .z {
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    padding: 10px;
+    margin: 5px;
+    -unity-font-style: bold;
+}
+
 .input-lettre > button {
     width: 200px;
     height: 200px;

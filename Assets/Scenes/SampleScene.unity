@@ -437,6 +437,8 @@ GameObject:
   - component: {fileID: 1628887599}
   - component: {fileID: 1628887598}
   - component: {fileID: 1628887600}
+  - component: {fileID: 1628887601}
+  - component: {fileID: 1628887602}
   m_Layer: 5
   m_Name: GameStart
   m_TagString: Untagged
@@ -486,6 +488,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229c9f29260dc414796e58a19ac1da10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1628887601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628887597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1599df40340fac94ea470712ca0550eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  words:
+  - FRANCE
+  - ORANGE
+  - PHONE
+  - LIBERTE
+--- !u!114 &1628887602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628887597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a00f503e52a4d468f5da93d65f7bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
