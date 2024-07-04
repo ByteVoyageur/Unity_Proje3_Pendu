@@ -1,0 +1,48 @@
+.game-start {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(225, 210, 210);
+    flex-direction: row;
+}
+
+.zone-interaction {
+    height: 100%;
+    width: auto;
+}
+
+.display-area {
+    background-color: rgb(173, 149, 149);
+    height: auto;
+}
+
+.key-board {
+}
+
+.input-lettre {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.input-lettre > .a, .input-lettre > .b, .input-lettre > .c, .input-lettre > .d,
+.input-lettre > .e, .input-lettre > .f, .input-lettre > .g, .input-lettre > .h, .input-lettre > .i,
+.input-lettre > .j, .input-lettre > .k, .input-lettre > .l, .input-lettre > .m, .input-lettre > .n,
+.input-lettre > .o, .input-lettre > .p, .input-lettre > .q, .input-lettre > .r, .input-lettre > .s,
+.input-lettre > .t, .input-lettre > .u, .input-lettre > .v, .input-lettre > .w, .input-lettre > .x,
+.input-lettre > .y, .input-lettre > .z {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+}
+
+/* Add the default style for all buttons */
+.input-lettre > button {
+    width: 200px;
+    height: 200px;
+    font-size: 50px;
+    padding: 20px;
+    margin: 15px;
+}

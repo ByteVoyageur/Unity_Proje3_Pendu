@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/style.uss?fileID=7433441132597879392&amp;guid=c3f0a43fb1dd86c4fbfc33f03ba6bc90&amp;type=3#style" />
+    <ui:VisualElement name="GameStart" class="game-start">
+        <ui:VisualElement name="ZoneInteraction" class="zone-interaction" style="flex-grow: 1;">
+            <ui:VisualElement name="DisplayArea" class="display-area" style="flex-grow: 1;" />
+            <ui:VisualElement name="Keyboard" class="key-board" style="flex-grow: 1;">
+                <ui:VisualElement name="InputLettre" class="input-lettre" style="flex-grow: 1;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
