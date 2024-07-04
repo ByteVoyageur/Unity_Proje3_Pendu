@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public class WordGenerator : MonoBehaviour
 {
-    public string[] words = new string[] { "FRANCE", "ORANGE", "PHONE", "LIBERTE" };
+    public string[] words = new string[] { "FRANCE", "ORANGE", "PHONE", "CAR" };
     private System.Random random = new System.Random();
 
     void OnEnable()

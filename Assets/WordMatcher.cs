@@ -7,6 +7,7 @@ public class WordMatcher : MonoBehaviour
     private string currentWord;
     private Label wordLabel;
     private VisualElement keyboardContainer;
+    private bool[] matchedLetters; // Array to keep track of matched letters
 
     void OnEnable()
     {
@@ -18,6 +19,8 @@ public class WordMatcher : MonoBehaviour
         currentWord = wordLabel.text;
         Debug.Log($"Current Word: {currentWord}"); // Log the current word
 
+        matchedLetters = new bool[currentWord.Length]; // initial matchedLetters list
+
         // Add button click listeners for all keyboard buttons
         foreach (VisualElement element in keyboardContainer.Children())
         {
@@ -26,7 +29,7 @@ public class WordMatcher : MonoBehaviour
                 button.clicked += () =>
                 {
                     char inputLetter = button.text.ToUpper()[0];
-                    Debug.Log($"Button Clicked: {inputLetter}"); // Log the clicked letter
+                    Debug.Log($"Button Clicked: {inputLetter}"); 
                     OnButtonClick(inputLetter);
                 };
             }
@@ -36,17 +39,13 @@ public class WordMatcher : MonoBehaviour
     private void OnButtonClick(char inputLetter)
     {
         Debug.Log($"Checking input letter: {inputLetter} against word: {currentWord}"); // Log the input letter and current word
-        char[] displayedWordArray = new char[currentWord.Length];
 
         for (int i = 0; i < currentWord.Length; i++)
         {
             if (currentWord[i] == inputLetter)
             {
-                displayedWordArray[i] = currentWord[i];
-            }
-            else
-            {
-                displayedWordArray[i] = ' '; // Use space to preserve original positions
+                matchedLetters[i] = true; // Record that the letter at the current position has been matched
+                Debug.Log($"Matched letter: {currentWord[i]} at position {i}"); // Log the matched letter and position
             }
         }
 
@@ -54,10 +53,9 @@ public class WordMatcher : MonoBehaviour
         string richText = "";
         for (int i = 0; i < currentWord.Length; i++)
         {
-            if (displayedWordArray[i] == currentWord[i])
+            if (matchedLetters[i])
             {
                 richText += $"<color=green>{currentWord[i]}</color>";
-                Debug.Log($"Matched letter: {currentWord[i]} at position {i}"); // Log the matched letter and position
             }
             else
             {
