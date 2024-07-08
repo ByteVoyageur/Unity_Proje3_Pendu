@@ -6,9 +6,11 @@ using UnityEngine.UIElements;
 public class WordGenerator : MonoBehaviour
 {
     public string apiUrl = "https://trouve-mot.fr/api/random"; // API URL
+    private WordMatcher wordMatcher;
 
     void OnEnable()
     {
+        wordMatcher = GetComponent<WordMatcher>();
         StartCoroutine(GetRandomWordFromAPI());
     }
 
@@ -34,9 +36,10 @@ public class WordGenerator : MonoBehaviour
                 if (words != null && words.Length > 0)
                 {
                     // Get the name of the first word
-                    string randomWord = words[0].name;
+                    string randomWord = words[0].name.ToUpper(); // Convert to uppercase
 
                     SetWordToLabel(randomWord);
+                    wordMatcher.Initialize(randomWord); // Initialize the WordMatcher after setting the word
                 }
                 else
                 {

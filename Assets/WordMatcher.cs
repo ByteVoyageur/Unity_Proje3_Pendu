@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -15,12 +14,6 @@ public class WordMatcher : MonoBehaviour
         wordLabel = root.Q<Label>("WordLabel");
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
-        // Get the current word from the WordLabel
-        currentWord = wordLabel.text;
-        Debug.Log($"Current Word: {currentWord}"); 
-
-        matchedLetters = new bool[currentWord.Length]; // initial matchedLetters list
-
         // Add button click listeners for all keyboard buttons
         foreach (VisualElement element in keyboardContainer.Children())
         {
@@ -28,12 +21,19 @@ public class WordMatcher : MonoBehaviour
             {
                 button.clicked += () =>
                 {
-                    char inputLetter = button.text.ToUpper()[0];
+                    char inputLetter = button.text.ToUpper()[0]; // Convert to uppercase
                     Debug.Log($"Button Clicked: {inputLetter}"); 
                     OnButtonClick(inputLetter);
                 };
             }
         }
+    }
+
+    public void Initialize(string word)
+    {
+        currentWord = word.ToUpper(); // Convert to uppercase
+        matchedLetters = new bool[currentWord.Length]; // Initialize matchedLetters array
+        Debug.Log($"Initialized with word: {currentWord}");
     }
 
     private void OnButtonClick(char inputLetter)
