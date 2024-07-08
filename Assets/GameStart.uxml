@@ -6,7 +6,9 @@
                 <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WordLabel" class="word-label" />
             </ui:VisualElement>
             <ui:VisualElement name="Keyboard" class="key-board" style="flex-grow: 1;">
-                <ui:VisualElement name="InputLettre" class="input-lettre" style="flex-grow: 1;" />
+                <ui:VisualElement name="KeyboardButtons" class="input-lettre keyboard-buttons" style="flex-grow: 1;">
+                    <ui:VisualElement name="KeyboardButton" style="flex-grow: 1; width: auto; height: auto;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

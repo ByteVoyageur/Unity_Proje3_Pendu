@@ -7,7 +7,8 @@
 
 .zone-interaction {
     height: 100%;
-    width: auto;
+    width: 100%;
+    flex-direction: row;
 }
 
 .display-area {
@@ -20,254 +21,24 @@
     -unity-text-align: upper-center;
 }
 
-.key-board {
+.keyboard {
 }
 
-.input-lettre {
+.keyboard-buttons {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    width: 100%;
 }
 
-.input-lettre > .a {
+.keyboard-button {
     width: 150px;
     height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
     -unity-font-style: bold;
-}
-
-.input-lettre > .b {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
+    font-size: 40px;
     margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .c {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
     padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .d {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .e {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .f {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .g {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .h {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .i {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .j {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .k {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .l {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .m {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .n {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .o {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .p {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .q {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .r {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .s {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .t {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .u {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .v {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .w {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .x {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .y {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > .z {
-    width: 150px;
-    height: 150px;
-    font-size: 35px;
-    padding: 10px;
-    margin: 5px;
-    -unity-font-style: bold;
-}
-
-.input-lettre > button {
-    width: 200px;
-    height: 200px;
-    font-size: 50px;
-    padding: 20px;
-    margin: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

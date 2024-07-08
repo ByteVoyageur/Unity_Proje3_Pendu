@@ -7,7 +7,7 @@ public class KeyboardGenerator : MonoBehaviour
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
-        VisualElement keyboardContainer = root.Q<VisualElement>("InputLettre");
+        VisualElement keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
@@ -15,10 +15,8 @@ public class KeyboardGenerator : MonoBehaviour
         {
             Button button = new Button() { text = letter.ToString() };
             button.name = letter.ToString().ToLower();
-            button.AddToClassList(letter.ToString().ToLower());
+            button.AddToClassList("keyboard-button");  // use a same class name
             keyboardContainer.Add(button);
-            
-            // Debug log to confirm the class is added
         }
     }
 }

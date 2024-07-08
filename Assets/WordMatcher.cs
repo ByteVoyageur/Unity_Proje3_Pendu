@@ -13,11 +13,11 @@ public class WordMatcher : MonoBehaviour
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         wordLabel = root.Q<Label>("WordLabel");
-        keyboardContainer = root.Q<VisualElement>("InputLettre");
+        keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
         // Get the current word from the WordLabel
         currentWord = wordLabel.text;
-        Debug.Log($"Current Word: {currentWord}"); // Log the current word
+        Debug.Log($"Current Word: {currentWord}"); 
 
         matchedLetters = new bool[currentWord.Length]; // initial matchedLetters list
 
