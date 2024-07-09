@@ -42,3 +42,8 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.used-button {
+    background-color: #ff6666;
+    color: white;
+}

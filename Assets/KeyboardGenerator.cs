@@ -9,7 +9,7 @@ public class KeyboardGenerator : MonoBehaviour
 
         VisualElement keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
-        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+        char[] alphabet = "AZERTYUIOPQSDFGHJKLMWXCVBN".ToCharArray();
 
         foreach (char letter in alphabet)
         {
