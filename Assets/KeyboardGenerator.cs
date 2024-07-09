@@ -18,5 +18,11 @@ public class KeyboardGenerator : MonoBehaviour
             button.AddToClassList("keyboard-button");  // use a same class name
             keyboardContainer.Add(button);
         }
+
+        // Add a "Next" button
+        Button nextButton = new Button() { text = "Next" };
+        nextButton.name = "next-button";
+        nextButton.AddToClassList("next-button-class");
+        keyboardContainer.Add(nextButton);
     }
 }

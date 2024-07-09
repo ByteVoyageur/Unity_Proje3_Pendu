@@ -47,3 +47,13 @@
     background-color: #ff6666;
     color: white;
 }
+
+.next-button-class {
+    width: 450px;
+    height: 150px;
+    background-color: #90EE90; 
+    color: white;
+    font-size: 50px;
+    width: 200px;
+    height: 200px;
+}

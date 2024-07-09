@@ -8,7 +8,8 @@ public class KeyboardStatusManager : MonoBehaviour
 
     void OnEnable()
     {
-        // get UIDocument
+        Debug.Log("KeyboardStatusManager OnEnable called");
+        
         var uiDocument = GetComponent<UIDocument>();
         if (uiDocument == null)
         {
@@ -16,24 +17,39 @@ public class KeyboardStatusManager : MonoBehaviour
             return;
         }
 
-        // get rootVisualElement
         VisualElement root = uiDocument.rootVisualElement;
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
-        // parcourir each button
+        if (keyboardContainer == null) 
+        {
+            Debug.LogError("No keyboard container found!");
+            return;
+        }
+
         foreach (VisualElement element in keyboardContainer.Children())
         {
-            if (element is Button button)
+            if (element is Button button && button.name != "next-button") // Exclude the Next button
             {
-                button.clicked += () => UpdateButtonStatus(button);
+                button.clicked += () =>
+                {
+                    Debug.Log($"Button {button.text} clicked");
+                    UpdateButtonStatus(button);
+                };
             }
         }
     }
 
     private void UpdateButtonStatus(Button button)
     {
-        // update button style
+        if (button.ClassListContains("used-button")) 
+        {
+            Debug.Log($"Button {button.text} already updated");
+            return;
+        }
+
+        Debug.Log($"Updating status for button {button.text}");
         button.AddToClassList("used-button");
         button.text = "X";
+        Debug.Log($"Button {button.text} updated with class used-button");
     }
 }
