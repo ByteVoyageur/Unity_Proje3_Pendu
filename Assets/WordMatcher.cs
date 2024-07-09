@@ -55,7 +55,7 @@ public class WordMatcher : MonoBehaviour
         {
             if (matchedLetters[i])
             {
-                richText += $"<color=green>{currentWord[i]}</color>";
+                richText += $"<color=#90EE90>{currentWord[i]}</color>";
             }
             else
             {

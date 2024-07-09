@@ -3,10 +3,11 @@ using UnityEngine.UIElements;
 
 public class KeyboardGenerator : MonoBehaviour
 {
+    private NextButtonHandler nextButtonHandler;
+
     void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
-
         VisualElement keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
         char[] alphabet = "AZERTYUIOPQSDFGHJKLMWXCVBN".ToCharArray();
@@ -15,8 +16,15 @@ public class KeyboardGenerator : MonoBehaviour
         {
             Button button = new Button() { text = letter.ToString() };
             button.name = letter.ToString().ToLower();
-            button.AddToClassList("keyboard-button");  // use a same class name
+            button.AddToClassList("keyboard-button");
             keyboardContainer.Add(button);
+        }
+        
+        // Find the NextButtonHandler component
+        nextButtonHandler = GetComponent<NextButtonHandler>();
+        if (nextButtonHandler == null)
+        {
+            nextButtonHandler = gameObject.AddComponent<NextButtonHandler>(); // ensure NextButtonHandler exists
         }
 
         // Add a "Next" button
@@ -24,5 +32,8 @@ public class KeyboardGenerator : MonoBehaviour
         nextButton.name = "next-button";
         nextButton.AddToClassList("next-button-class");
         keyboardContainer.Add(nextButton);
+
+        // Bind the method from NextButtonHandler
+        nextButton.clicked += nextButtonHandler.OnNextButtonClick;  
     }
 }

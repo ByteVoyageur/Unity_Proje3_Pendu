@@ -14,7 +14,7 @@ public class WordGenerator : MonoBehaviour
         StartCoroutine(GetRandomWordFromAPI());
     }
 
-    IEnumerator GetRandomWordFromAPI()
+    public IEnumerator GetRandomWordFromAPI()
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(apiUrl))
         {
