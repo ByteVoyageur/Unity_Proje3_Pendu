@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -5,6 +7,7 @@ using UnityEngine.UIElements;
 public class WordMatcher : MonoBehaviour
 {
     private string currentWord;
+    private string normalizedWord;
     private Label wordLabel;
     private VisualElement keyboardContainer;
     private bool[] matchedLetters; // Array to keep track of matched letters
@@ -30,24 +33,26 @@ public class WordMatcher : MonoBehaviour
         }
     }
 
- // Initialize the current word
-    public void Initialize(string word)
+    // Initialize the current word and its normalized version
+    public void Initialize(string word, string normalized)
     {
-        currentWord = word.ToUpper(); 
+        currentWord = word; // Keep the original word for display
+        normalizedWord = normalized; // Use the normalized word for matching
         matchedLetters = new bool[currentWord.Length]; // Initialize matchedLetters array
-        Debug.Log($"Initialized with word: {currentWord}");
+        Debug.Log($"Initialized with word: {currentWord}, normalized: {normalizedWord}");
     }
 
+    // Handle button click event
     private void OnButtonClick(char inputLetter)
     {
-        Debug.Log($"Checking input letter: {inputLetter} against word: {currentWord}"); // Log the input letter and current word
+        Debug.Log($"Checking input letter: {inputLetter} against word: {normalizedWord}"); // Log the input letter and normalized word
 
-        for (int i = 0; i < currentWord.Length; i++)
+        for (int i = 0; i < normalizedWord.Length; i++)
         {
-            if (currentWord[i] == inputLetter)
+            if (normalizedWord[i] == inputLetter)
             {
                 matchedLetters[i] = true; // Record that the letter at the current position has been matched
-                Debug.Log($"Matched letter: {currentWord[i]} at position {i}"); // Log the matched letter and position
+                Debug.Log($"Matched letter: {normalizedWord[i]} at position {i}"); // Log the matched letter and position
             }
         }
 
@@ -70,5 +75,29 @@ public class WordMatcher : MonoBehaviour
 
         // Update the WordLabel with the new rich text
         wordLabel.text = richText;
+    }
+
+    // Existing Initialize method for backward compatibility
+    public void Initialize(string word)
+    {
+        Initialize(word, NormalizeString(word)); // Call the new Initialize method with normalized word
+    }
+
+    // Normalize the string to remove diacritics and convert to uppercase
+    private string NormalizeString(string input)
+    {
+        string normalizedString = input.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
+        {
+            UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+            {
+                stringBuilder.Append(c);
+            }
+        }
+
+        return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper(); // Ensure the string is uppercase
     }
 }

@@ -17,12 +17,12 @@ public class WordGenerator : MonoBehaviour
         StartCoroutine(GetRandomWordFromAPI());
     }
 
-//fetch a random word from the API
+    // Coroutine to fetch a random word from the API
     public IEnumerator GetRandomWordFromAPI()
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(apiUrl))
         {
-            // Send a request and wait for a response
+            // Send request and wait for a response
             yield return webRequest.SendWebRequest();
 
             if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
@@ -39,11 +39,11 @@ public class WordGenerator : MonoBehaviour
 
                 if (words != null && words.Length > 0)
                 {
-                    // Get the name of the first word
-                    string randomWord = words[0].name.ToUpper(); // Convert to uppercase
+                    // Get the name of the first word and convert to uppercase
+                    string randomWord = words[0].name.ToUpper();
 
                     SetWordToLabel(randomWord);
-                    wordMatcher.Initialize(NormalizeString(randomWord)); // Initialize the WordMatcher with normalized word
+                    wordMatcher.Initialize(randomWord, NormalizeString(randomWord)); // Initialize the WordMatcher with the original and normalized word
                 }
                 else
                 {
@@ -53,7 +53,7 @@ public class WordGenerator : MonoBehaviour
         }
     }
 
-// Set the word to the UI label
+    // Set the word to the UI label
     void SetWordToLabel(string word)
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -61,10 +61,11 @@ public class WordGenerator : MonoBehaviour
 
         wordLabel.text = word;
 
+        // Optional: Debug log to confirm the word is set
         Debug.Log($"Selected Word: {word}");
     }
 
-// Normalize the word to remove diacritics and convert to uppercase
+    // Normalize the string to remove diacritics and convert to uppercase
     string NormalizeString(string input)
     {
         string normalizedString = input.Normalize(NormalizationForm.FormD);
@@ -82,7 +83,7 @@ public class WordGenerator : MonoBehaviour
         return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper(); // Ensure the string is uppercase
     }
 
-// Represents the data structure of the API response
+    // Represents the data structure of the API response
     [System.Serializable]
     public class ApiResponse
     {
@@ -90,7 +91,7 @@ public class WordGenerator : MonoBehaviour
         public string categorie;
     }
 
-// Helper class for handling JSON data
+    // Helper class for handling JSON data
     public static class JsonHelper
     {
         public static T[] FromJson<T>(string json)
