@@ -4,6 +4,10 @@
         <ui:VisualElement name="ZoneInteraction" class="zone-interaction" style="flex-grow: 1;">
             <ui:VisualElement name="DisplayArea" class="display-area" style="flex-grow: 1;">
                 <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WordLabel" class="word-label" />
+                <ui:VisualElement name="ResultatLabel" class="result-label" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="SUCCESS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SuccessLabel" class="sucess-label" />
+                    <ui:Label tabindex="-1" text="FAILD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FaildLabel" class="faild-label" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="Keyboard" class="key-board" style="flex-grow: 1;">
                 <ui:VisualElement name="KeyboardButtons" class="input-lettre keyboard-buttons" style="flex-grow: 1;">

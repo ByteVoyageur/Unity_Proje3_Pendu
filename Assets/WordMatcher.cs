@@ -1,7 +1,8 @@
-using System.Globalization;
-using System.Text;
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Globalization;
+using System.Text;
 
 // This class handles user input and matches it against the current word
 public class WordMatcher : MonoBehaviour
@@ -11,6 +12,12 @@ public class WordMatcher : MonoBehaviour
     private Label wordLabel;
     private VisualElement keyboardContainer;
     private bool[] matchedLetters; // Array to keep track of matched letters
+    private bool inputDisabled = false; // Flag to disable input after max attempts
+
+    public event Action<bool> OnWordMatched; // Event to notify word match result
+    public event Action OnNewWordInitialized; // Event to notify new word initialization
+
+    private MatchResultManager matchResultManager;
 
     void OnEnable()
     {
@@ -25,12 +32,17 @@ public class WordMatcher : MonoBehaviour
             {
                 button.clicked += () =>
                 {
-                    char inputLetter = button.text.ToUpper()[0]; // Convert to uppercase
-                    Debug.Log($"Button Clicked: {inputLetter}"); 
-                    OnButtonClick(inputLetter);
+                    if (!inputDisabled)
+                    {
+                        char inputLetter = button.text.ToUpper()[0]; // Convert to uppercase
+                        Debug.Log($"Button Clicked: {inputLetter}"); 
+                        OnButtonClick(inputLetter);
+                    }
                 };
             }
         }
+
+        matchResultManager = GetComponent<MatchResultManager>();
     }
 
     // Initialize the current word and its normalized version
@@ -39,7 +51,14 @@ public class WordMatcher : MonoBehaviour
         currentWord = word; // Keep the original word for display
         normalizedWord = normalized; // Use the normalized word for matching
         matchedLetters = new bool[currentWord.Length]; // Initialize matchedLetters array
+        inputDisabled = false; // Enable input on new word initialization
         Debug.Log($"Initialized with word: {currentWord}, normalized: {normalizedWord}");
+
+        // Notify new word initialization
+        OnNewWordInitialized?.Invoke();
+
+        // Set max attempts in MatchResultManager
+        matchResultManager.SetMaxAttempts(currentWord.Length);
     }
 
     // Handle button click event
@@ -47,17 +66,20 @@ public class WordMatcher : MonoBehaviour
     {
         Debug.Log($"Checking input letter: {inputLetter} against word: {normalizedWord}"); // Log the input letter and normalized word
 
+        bool isMatched = false;
         for (int i = 0; i < normalizedWord.Length; i++)
         {
             if (normalizedWord[i] == inputLetter)
             {
                 matchedLetters[i] = true; // Record that the letter at the current position has been matched
                 Debug.Log($"Matched letter: {normalizedWord[i]} at position {i}"); // Log the matched letter and position
+                isMatched = true;
             }
         }
 
         // Build new rich text string with matching letters in green
         string richText = "";
+        bool allMatched = true;
         for (int i = 0; i < currentWord.Length; i++)
         {
             if (matchedLetters[i])
@@ -67,6 +89,7 @@ public class WordMatcher : MonoBehaviour
             else
             {
                 richText += currentWord[i];
+                allMatched = false;
             }
         }
 
@@ -75,6 +98,9 @@ public class WordMatcher : MonoBehaviour
 
         // Update the WordLabel with the new rich text
         wordLabel.text = richText;
+
+        // Notify the result
+        OnWordMatched?.Invoke(allMatched);
     }
 
     // Existing Initialize method for backward compatibility

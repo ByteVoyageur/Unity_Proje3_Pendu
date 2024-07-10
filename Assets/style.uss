@@ -21,6 +21,20 @@
     -unity-text-align: upper-center;
 }
 
+.result-label {
+    align-items: center;
+}
+
+.sucess-label {
+    font-size: 30px;
+    -unity-font-style: bold;
+}
+
+.faild-label {
+    font-size: 30px;
+    -unity-font-style: bold;
+}
+
 .keyboard {
 }
 

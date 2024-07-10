@@ -10,10 +10,20 @@ public class WordGenerator : MonoBehaviour
 {
     public string apiUrl = "https://trouve-mot.fr/api/random"; // API URL
     private WordMatcher wordMatcher;
+    private Button nextButton;
 
     void OnEnable()
     {
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         wordMatcher = GetComponent<WordMatcher>();
+        nextButton = root.Q<Button>("next-button");
+        nextButton.clicked += OnNextButtonClicked;
+
+        StartCoroutine(GetRandomWordFromAPI());
+    }
+
+    private void OnNextButtonClicked()
+    {
         StartCoroutine(GetRandomWordFromAPI());
     }
 
