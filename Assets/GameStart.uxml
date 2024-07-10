@@ -3,10 +3,15 @@
     <ui:VisualElement name="GameStart" class="game-start">
         <ui:VisualElement name="ZoneInteraction" class="zone-interaction" style="flex-grow: 1;">
             <ui:VisualElement name="DisplayArea" class="display-area" style="flex-grow: 1;">
-                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WordLabel" class="word-label" />
-                <ui:VisualElement name="ResultatLabel" class="result-label" style="flex-grow: 1;">
-                    <ui:Label tabindex="-1" text="SUCCESS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SuccessLabel" class="sucess-label" />
-                    <ui:Label tabindex="-1" text="FAILD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FaildLabel" class="faild-label" />
+                <ui:VisualElement name="ResultLabel" class="result-label" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WordLabel" class="word-label" />
+                    <ui:Label tabindex="-1" text="SUCCESS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SuccessLabel" class="success-label" />
+                    <ui:Label tabindex="-1" text="FAILD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FailedLabel" class="failed-label" /> 
+                </ui:VisualElement>
+                <ui:VisualElement name="AnimationContainer" class="animation-container" style="flex-grow: 1;" />
+                <ui:VisualElement name="ScoreContainer" class="score-container" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="score win" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreWin" class="score-win" />
+                    <ui:Label tabindex="-1" text="score faild" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreFailed" class="score-faild" /> 
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="Keyboard" class="key-board" style="flex-grow: 1;">

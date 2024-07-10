@@ -18,13 +18,10 @@ public class MatchResultManager : MonoBehaviour
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         // Get the result container and labels
-        resultContainer = root.Q<VisualElement>("ResultatLabel");
+        resultContainer = root.Q<VisualElement>("ResultLabel");
         successLabel = root.Q<Label>("SuccessLabel");
-        failedLabel = root.Q<Label>("FaildLabel");
+        failedLabel = root.Q<Label>("FailedLabel");
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
-
-        // Hide the result container initially
-        resultContainer.style.display = DisplayStyle.None;
 
         // Get the WordMatcher component
         wordMatcher = GetComponent<WordMatcher>();
@@ -32,6 +29,9 @@ public class MatchResultManager : MonoBehaviour
         // Subscribe to the word match event
         wordMatcher.OnWordMatched += HandleWordMatched;
         wordMatcher.OnNewWordInitialized += ResetAttemptsAndResults; // Subscribe to new event
+
+        // Show the result container initially
+        resultContainer.style.display = DisplayStyle.Flex; // Ensure the result container is visible initially
     }
 
     private void OnDisable()
@@ -58,7 +58,6 @@ public class MatchResultManager : MonoBehaviour
 
     private void ShowSuccess()
     {
-        resultContainer.style.display = DisplayStyle.Flex;
         successLabel.style.display = DisplayStyle.Flex;
         failedLabel.style.display = DisplayStyle.None;
         successLabel.style.color = Color.green;
@@ -66,7 +65,6 @@ public class MatchResultManager : MonoBehaviour
 
     private void ShowFailure()
     {
-        resultContainer.style.display = DisplayStyle.Flex;
         successLabel.style.display = DisplayStyle.None;
         failedLabel.style.display = DisplayStyle.Flex;
         failedLabel.style.color = Color.red;
@@ -75,8 +73,10 @@ public class MatchResultManager : MonoBehaviour
     private void ResetAttemptsAndResults()
     {
         currentAttempts = 0;
-        resultContainer.style.display = DisplayStyle.None;
         EnableKeyboard();
+        // Ensure both success and fail labels are hidden initially
+        successLabel.style.display = DisplayStyle.None;
+        failedLabel.style.display = DisplayStyle.None;
     }
 
     public void SetMaxAttempts(int wordLength)
