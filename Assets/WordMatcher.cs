@@ -77,7 +77,7 @@ public class WordMatcher : MonoBehaviour
             }
         }
 
-        // Build new rich text string with matching letters in green
+        // Build new rich text string with matching letters in green and underscores for unmatched letters
         string richText = "";
         bool allMatched = true;
         for (int i = 0; i < currentWord.Length; i++)
@@ -88,7 +88,7 @@ public class WordMatcher : MonoBehaviour
             }
             else
             {
-                richText += currentWord[i];
+                richText += "_";
                 allMatched = false;
             }
         }

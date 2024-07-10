@@ -71,7 +71,10 @@ public class WordGenerator : MonoBehaviour
         Label wordLabel = root.Q<Label>("WordLabel");
         Label hintCategoryLabel = root.Q<Label>("HintCategory");
 
-        wordLabel.text = word;
+        // Replace each letter with an underscore
+        string underscoreWord = new string('_', word.Length);
+
+        wordLabel.text = underscoreWord;
         hintCategoryLabel.text = category;
 
         // Optional: Debug log to confirm the word and category are set
