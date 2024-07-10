@@ -1,8 +1,11 @@
 using System.Collections;
+using System.Globalization;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
+// This class fetches a random word from an API and displays it on the UI
 public class WordGenerator : MonoBehaviour
 {
     public string apiUrl = "https://trouve-mot.fr/api/random"; // API URL
@@ -14,6 +17,7 @@ public class WordGenerator : MonoBehaviour
         StartCoroutine(GetRandomWordFromAPI());
     }
 
+//fetch a random word from the API
     public IEnumerator GetRandomWordFromAPI()
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(apiUrl))
@@ -39,7 +43,7 @@ public class WordGenerator : MonoBehaviour
                     string randomWord = words[0].name.ToUpper(); // Convert to uppercase
 
                     SetWordToLabel(randomWord);
-                    wordMatcher.Initialize(randomWord); // Initialize the WordMatcher after setting the word
+                    wordMatcher.Initialize(NormalizeString(randomWord)); // Initialize the WordMatcher with normalized word
                 }
                 else
                 {
@@ -49,6 +53,7 @@ public class WordGenerator : MonoBehaviour
         }
     }
 
+// Set the word to the UI label
     void SetWordToLabel(string word)
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -56,10 +61,28 @@ public class WordGenerator : MonoBehaviour
 
         wordLabel.text = word;
 
-        // Optional: Debug log to confirm the word is set
         Debug.Log($"Selected Word: {word}");
     }
 
+// Normalize the word to remove diacritics and convert to uppercase
+    string NormalizeString(string input)
+    {
+        string normalizedString = input.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
+        {
+            UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+            {
+                stringBuilder.Append(c);
+            }
+        }
+
+        return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper(); // Ensure the string is uppercase
+    }
+
+// Represents the data structure of the API response
     [System.Serializable]
     public class ApiResponse
     {
@@ -67,6 +90,7 @@ public class WordGenerator : MonoBehaviour
         public string categorie;
     }
 
+// Helper class for handling JSON data
     public static class JsonHelper
     {
         public static T[] FromJson<T>(string json)

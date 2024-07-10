@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// This class handles user input and matches it against the current word
 public class WordMatcher : MonoBehaviour
 {
     private string currentWord;
@@ -29,9 +30,10 @@ public class WordMatcher : MonoBehaviour
         }
     }
 
+ // Initialize the current word
     public void Initialize(string word)
     {
-        currentWord = word.ToUpper(); // Convert to uppercase
+        currentWord = word.ToUpper(); 
         matchedLetters = new bool[currentWord.Length]; // Initialize matchedLetters array
         Debug.Log($"Initialized with word: {currentWord}");
     }
