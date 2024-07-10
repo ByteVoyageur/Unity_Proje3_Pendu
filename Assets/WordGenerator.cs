@@ -49,10 +49,11 @@ public class WordGenerator : MonoBehaviour
 
                 if (words != null && words.Length > 0)
                 {
-                    // Get the name of the first word and convert to uppercase
+                    // Get the name and category of the first word and convert the name to uppercase
                     string randomWord = words[0].name.ToUpper();
+                    string category = words[0].categorie;
 
-                    SetWordToLabel(randomWord);
+                    SetWordAndCategoryToLabel(randomWord, category);
                     wordMatcher.Initialize(randomWord, NormalizeString(randomWord)); // Initialize the WordMatcher with the original and normalized word
                 }
                 else
@@ -63,16 +64,18 @@ public class WordGenerator : MonoBehaviour
         }
     }
 
-    // Set the word to the UI label
-    void SetWordToLabel(string word)
+    // Set the word and category to the UI labels
+    void SetWordAndCategoryToLabel(string word, string category)
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         Label wordLabel = root.Q<Label>("WordLabel");
+        Label hintCategoryLabel = root.Q<Label>("HintCategory");
 
         wordLabel.text = word;
+        hintCategoryLabel.text = category;
 
-        // Optional: Debug log to confirm the word is set
-        Debug.Log($"Selected Word: {word}");
+        // Optional: Debug log to confirm the word and category are set
+        Debug.Log($"Selected Word: {word}, Category: {category}");
     }
 
     // Normalize the string to remove diacritics and convert to uppercase

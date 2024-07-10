@@ -21,6 +21,11 @@
     align-self: center;
 }
 
+.hint-category {
+    font-size: 28px;
+    padding-bottom: 7px;
+}
+
 .word-label {
     font-size: 100px;
     -unity-text-align: upper-center;
@@ -57,10 +62,14 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 100%;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
 }
 
 .keyboard-button {
-    width: 139px;
+    width: 145px;
     height: 140px;
     -unity-font-style: bold;
     font-size: 40px;
@@ -68,6 +77,10 @@
     padding: 10px;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
 }
 
 .used-button {
@@ -82,5 +95,5 @@
     color: white;
     font-size: 50px;
     width: 207px;
-    height: 150px;
+    height: 145px;
 }
