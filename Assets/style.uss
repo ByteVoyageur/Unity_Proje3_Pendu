@@ -66,11 +66,12 @@
     padding-right: 4px;
     padding-bottom: 4px;
     padding-left: 4px;
+    height: 50%;
 }
 
 .keyboard-button {
-    width: 145px;
-    height: 140px;
+    width: 117px;
+    height: 103px;
     -unity-font-style: bold;
     font-size: 40px;
     margin: 5px;
@@ -94,6 +95,6 @@
     background-color: rgb(144, 238, 144);
     color: white;
     font-size: 50px;
-    width: 207px;
-    height: 145px;
+    width: 223px;
+    height: 107px;
 }

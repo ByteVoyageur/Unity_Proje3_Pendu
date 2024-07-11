@@ -7,17 +7,27 @@ public class NextButtonHandler : MonoBehaviour
     private WordGenerator wordGenerator;
     private WordMatcher wordMatcher;
     private MatchResultManager matchResultManager;
-    private VisualElement keyboardContainer;
+    private KeyboardStatusManager keyboardStatusManager;
 
     void Start()
     {
         wordGenerator = GetComponent<WordGenerator>();
         wordMatcher = GetComponent<WordMatcher>();
         matchResultManager = GetComponent<MatchResultManager>();
-        keyboardContainer = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("KeyboardButtons");
+        keyboardStatusManager = GetComponent<KeyboardStatusManager>(); // Initialize KeyboardStatusManager
         
+        var uiDocument = GetComponent<UIDocument>();
+        if (uiDocument == null)
+        {
+            Debug.LogError("No UIDocument component found!");
+            return;
+        }
+        
+        var root = uiDocument.rootVisualElement;
+        var keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
+
         // Add the click listener for the Next button
-        Button nextButton = GetComponent<UIDocument>().rootVisualElement.Q<Button>("next-button");
+        var nextButton = root.Q<Button>("next-button");
         if (nextButton != null)
         {
             nextButton.clicked += OnNextButtonClick;
@@ -40,10 +50,14 @@ public class NextButtonHandler : MonoBehaviour
             return;
         }
 
-        if (keyboardContainer == null)
+        // Reset keyboard buttons state
+        if (keyboardStatusManager != null)
         {
-            Debug.LogError("Keyboard container is not found.");
-            return;
+            keyboardStatusManager.ResetKeyboardStatus();
+        }
+        else
+        {
+            Debug.LogError("KeyboardStatusManager is not assigned.");
         }
 
         // Request a new word

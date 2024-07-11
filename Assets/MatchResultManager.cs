@@ -8,12 +8,12 @@ public class MatchResultManager : MonoBehaviour
     private Label failedLabel;
     private VisualElement keyboardContainer;
     private WordMatcher wordMatcher;
-    private Button nextButton;
+    private GameStatsManager gameStatsManager;  // Add reference to GameStatsManager
 
-    private int maxAttemptsSuccess;
+    private int maxAttemptsSuccess;  // Corrected variable name
     private int maxAttemptsFail = 10;
     private int currentAttempts = 0;
-    public bool isGameRunning = false;
+    public bool isGameRunning = false; // Track game running status
 
     void OnEnable()
     {
@@ -23,13 +23,14 @@ public class MatchResultManager : MonoBehaviour
         successLabel = root.Q<Label>("SuccessLabel");
         failedLabel = root.Q<Label>("FailedLabel");
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
-        nextButton = root.Q<Button>("next-button");
-
+        
         wordMatcher = GetComponent<WordMatcher>();
         wordMatcher.OnWordMatched += HandleWordMatched;
         wordMatcher.OnNewWordInitialized += ResetAttemptsAndResults;
 
         resultContainer.style.display = DisplayStyle.Flex;
+
+        gameStatsManager = GetComponent<GameStatsManager>(); // Initialize GameStatsManager
     }
 
     private void OnDisable()
@@ -45,15 +46,17 @@ public class MatchResultManager : MonoBehaviour
         if (isMatched)
         {
             ShowSuccess();
-            isGameRunning = false;
-            EnableNextButton(); // Enable Next button on success
+            isGameRunning = false; // End the game on success
+            gameStatsManager.IncrementWinCount(); // Increment win count
+            EnableNextButton();
         }
         else if (currentAttempts >= maxAttemptsFail)
         {
             ShowFailure();
             DisableKeyboard();
-            isGameRunning = false;
-            EnableNextButton(); // Enable Next button on failure
+            isGameRunning = false; // End the game on failure
+            gameStatsManager.IncrementLoseCount(); // Increment lose count
+            EnableNextButton();
         }
     }
 
@@ -77,7 +80,7 @@ public class MatchResultManager : MonoBehaviour
         EnableKeyboard();
         successLabel.style.display = DisplayStyle.None;
         failedLabel.style.display = DisplayStyle.None;
-        isGameRunning = true;
+        isGameRunning = true; // Start the game on new word initialization
     }
 
     public void SetMaxAttempts(int wordLength)
@@ -109,6 +112,10 @@ public class MatchResultManager : MonoBehaviour
 
     private void EnableNextButton()
     {
-        nextButton.SetEnabled(true);
+        Button nextButton = keyboardContainer.Q<Button>("next-button");
+        if (nextButton != null)
+        {
+            nextButton.SetEnabled(true);
+        }
     }
 }

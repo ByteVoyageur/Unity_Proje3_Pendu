@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -51,5 +50,25 @@ public class KeyboardStatusManager : MonoBehaviour
         button.AddToClassList("used-button");
         button.text = "X";
         Debug.Log($"Button {button.text} updated with class used-button");
+    }
+
+    public void ResetKeyboardStatus()
+    {
+        if (keyboardContainer == null) 
+        {
+            Debug.LogError("No keyboard container found!");
+            return;
+        }
+
+        foreach (VisualElement element in keyboardContainer.Children())
+        {
+            if (element is Button button && button.ClassListContains("used-button")) 
+            {
+                button.RemoveFromClassList("used-button");
+                button.text = button.name.ToUpper();
+            }
+        }
+
+        Debug.Log("Keyboard status reset successfully!");
     }
 }
