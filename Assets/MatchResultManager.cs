@@ -8,37 +8,34 @@ public class MatchResultManager : MonoBehaviour
     private Label failedLabel;
     private VisualElement keyboardContainer;
     private WordMatcher wordMatcher;
+    private Button nextButton;
 
     private int maxAttemptsSuccess;
     private int maxAttemptsFail = 10;
     private int currentAttempts = 0;
+    public bool isGameRunning = false;
 
     void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
-        // Get the result container and labels
         resultContainer = root.Q<VisualElement>("ResultLabel");
         successLabel = root.Q<Label>("SuccessLabel");
         failedLabel = root.Q<Label>("FailedLabel");
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
+        nextButton = root.Q<Button>("next-button");
 
-        // Get the WordMatcher component
         wordMatcher = GetComponent<WordMatcher>();
-
-        // Subscribe to the word match event
         wordMatcher.OnWordMatched += HandleWordMatched;
-        wordMatcher.OnNewWordInitialized += ResetAttemptsAndResults; // Subscribe to new event
+        wordMatcher.OnNewWordInitialized += ResetAttemptsAndResults;
 
-        // Show the result container initially
-        resultContainer.style.display = DisplayStyle.Flex; // Ensure the result container is visible initially
+        resultContainer.style.display = DisplayStyle.Flex;
     }
 
     private void OnDisable()
     {
-        // Unsubscribe from the word match event
         wordMatcher.OnWordMatched -= HandleWordMatched;
-        wordMatcher.OnNewWordInitialized -= ResetAttemptsAndResults; // Unsubscribe from new event
+        wordMatcher.OnNewWordInitialized -= ResetAttemptsAndResults;
     }
 
     private void HandleWordMatched(bool isMatched)
@@ -48,11 +45,15 @@ public class MatchResultManager : MonoBehaviour
         if (isMatched)
         {
             ShowSuccess();
+            isGameRunning = false;
+            EnableNextButton(); // Enable Next button on success
         }
         else if (currentAttempts >= maxAttemptsFail)
         {
             ShowFailure();
             DisableKeyboard();
+            isGameRunning = false;
+            EnableNextButton(); // Enable Next button on failure
         }
     }
 
@@ -74,14 +75,14 @@ public class MatchResultManager : MonoBehaviour
     {
         currentAttempts = 0;
         EnableKeyboard();
-        // Ensure both success and fail labels are hidden initially
         successLabel.style.display = DisplayStyle.None;
         failedLabel.style.display = DisplayStyle.None;
+        isGameRunning = true;
     }
 
     public void SetMaxAttempts(int wordLength)
     {
-        maxAttemptsSuccess = wordLength; // Set max success attempts to the word length
+        maxAttemptsSuccess = wordLength;
     }
 
     private void DisableKeyboard()
@@ -104,5 +105,10 @@ public class MatchResultManager : MonoBehaviour
                 button.SetEnabled(true);
             }
         }
+    }
+
+    private void EnableNextButton()
+    {
+        nextButton.SetEnabled(true);
     }
 }

@@ -6,38 +6,45 @@ public class NextButtonHandler : MonoBehaviour
 {
     private WordGenerator wordGenerator;
     private WordMatcher wordMatcher;
+    private MatchResultManager matchResultManager;
     private VisualElement keyboardContainer;
 
     void Start()
     {
         wordGenerator = GetComponent<WordGenerator>();
         wordMatcher = GetComponent<WordMatcher>();
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        keyboardContainer = uiDocument.rootVisualElement.Q<VisualElement>("KeyboardButtons");
+        matchResultManager = GetComponent<MatchResultManager>();
+        keyboardContainer = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("KeyboardButtons");
+        
+        // Add the click listener for the Next button
+        Button nextButton = GetComponent<UIDocument>().rootVisualElement.Q<Button>("next-button");
+        if (nextButton != null)
+        {
+            nextButton.clicked += OnNextButtonClick;
+        }
     }
 
     public void OnNextButtonClick()
     {
         Debug.Log("Next button clicked!");
 
+        if (matchResultManager == null)
+        {
+            Debug.LogError("MatchResultManager is not assigned.");
+            return;
+        }
+
+        if (matchResultManager.isGameRunning)
+        {
+            Debug.Log("Game is running. Next button click ignored.");
+            return;
+        }
+
         if (keyboardContainer == null)
         {
-            UIDocument uiDocument = GetComponent<UIDocument>();
-            keyboardContainer = uiDocument.rootVisualElement.Q<VisualElement>("KeyboardButtons");
+            Debug.LogError("Keyboard container is not found.");
+            return;
         }
-
-        // Reset keyboard buttons state
-        foreach (VisualElement element in keyboardContainer.Children())
-        {
-            if (element is Button button && button.name != "next-button")
-            {
-                button.text = button.name.ToUpper();
-                button.RemoveFromClassList("used-button");
-            }
-        }
-
-        // Clear previous word state
-        wordMatcher.Initialize(string.Empty);
 
         // Request a new word
         StartCoroutine(wordGenerator.GetRandomWordFromAPI());
