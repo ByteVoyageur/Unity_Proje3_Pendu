@@ -1,9 +1,11 @@
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class KeyboardGenerator : MonoBehaviour
 {
     private NextButtonHandler nextButtonHandler;
+    private WordMatcher wordMatcher;
 
     void OnEnable()
     {
@@ -12,14 +14,18 @@ public class KeyboardGenerator : MonoBehaviour
 
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
+        wordMatcher = GetComponent<WordMatcher>();
+
         foreach (char letter in alphabet)
         {
             Button button = new Button() { text = letter.ToString() };
             button.name = letter.ToString().ToLower();
             button.AddToClassList("keyboard-button");
             keyboardContainer.Add(button);
+
+            button.clicked += () => HandleButtonClick(button);
         }
-        
+
         // Find the NextButtonHandler component
         nextButtonHandler = GetComponent<NextButtonHandler>();
         if (nextButtonHandler == null)
@@ -35,5 +41,12 @@ public class KeyboardGenerator : MonoBehaviour
 
         // Bind the method from NextButtonHandler
         nextButton.clicked += nextButtonHandler.OnNextButtonClick;  
+    }
+
+    private void HandleButtonClick(Button button)
+    {
+        char inputLetter = button.text.ToUpper()[0];
+        Debug.Log("Button Clicked: " + button.name );
+        wordMatcher.OnButtonClick(inputLetter);
     }
 }

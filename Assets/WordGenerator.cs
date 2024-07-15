@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Globalization;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
@@ -50,7 +48,7 @@ public class WordGenerator : MonoBehaviour
                     string category = words[0].categorie;
 
                     SetWordAndCategoryToLabel(randomWord, category);
-                    wordMatcher.Initialize(randomWord, NormalizeString(randomWord));
+                    wordMatcher.Initialize(randomWord, WordNormalizer.NormalizeString(randomWord));
                     
                     // Disable the Next button when initializing word
                     nextButton.SetEnabled(false);
@@ -75,23 +73,6 @@ public class WordGenerator : MonoBehaviour
         hintCategoryLabel.text = category;
 
         Debug.Log($"Selected Word: {word}, Category: {category}");
-    }
-
-    string NormalizeString(string input)
-    {
-        string normalizedString = input.Normalize(NormalizationForm.FormD);
-        StringBuilder stringBuilder = new StringBuilder();
-
-        foreach (char c in normalizedString)
-        {
-            UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
-            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
-            {
-                stringBuilder.Append(c);
-            }
-        }
-
-        return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper();
     }
 
     [System.Serializable]

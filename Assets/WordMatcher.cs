@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Globalization;
-using System.Text;
 
 // This class handles user input and matches it against the current word
 public class WordMatcher : MonoBehaviour
@@ -25,23 +23,6 @@ public class WordMatcher : MonoBehaviour
         wordLabel = root.Q<Label>("WordLabel");
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
-        // Add button click listeners for all keyboard buttons
-        foreach (VisualElement element in keyboardContainer.Children())
-        {
-            if (element is Button button)
-            {
-                button.clicked += () =>
-                {
-                    if (!inputDisabled)
-                    {
-                        char inputLetter = button.text.ToUpper()[0]; // Convert to uppercase
-                        Debug.Log($"Button Clicked: {inputLetter}"); 
-                        OnButtonClick(inputLetter);
-                    }
-                };
-            }
-        }
-
         matchResultManager = GetComponent<MatchResultManager>();
     }
 
@@ -62,18 +43,19 @@ public class WordMatcher : MonoBehaviour
     }
 
     // Handle button click event
-    private void OnButtonClick(char inputLetter)
+    public void OnButtonClick(char inputLetter)
     {
+        if (inputDisabled)
+            return;
+
         Debug.Log($"Checking input letter: {inputLetter} against word: {normalizedWord}"); // Log the input letter and normalized word
 
-        bool isMatched = false;
         for (int i = 0; i < normalizedWord.Length; i++)
         {
             if (normalizedWord[i] == inputLetter)
             {
                 matchedLetters[i] = true; // Record that the letter at the current position has been matched
                 Debug.Log($"Matched letter: {normalizedWord[i]} at position {i}"); // Log the matched letter and position
-                isMatched = true;
             }
         }
 
@@ -106,25 +88,6 @@ public class WordMatcher : MonoBehaviour
     // Existing Initialize method for backward compatibility
     public void Initialize(string word)
     {
-        Initialize(word, NormalizeString(word)); // Call the new Initialize method with normalized word
-    }
-
-    // Normalize the string to remove diacritics and convert to uppercase
-    private string NormalizeString(string input)
-    {
-        string normalizedString = input.Normalize(NormalizationForm.FormD);
-        StringBuilder stringBuilder = new StringBuilder();
-
-        foreach (char c in normalizedString)
-        {
-            UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
-            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
-            {
-                stringBuilder.Append(c);
-            }
-        }
-
-        return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper(); // Ensure the string is uppercase
+        Initialize(word, WordNormalizer.NormalizeString(word)); // Call the new Initialize method with normalized word
     }
 }
-
