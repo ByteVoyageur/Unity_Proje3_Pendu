@@ -50,12 +50,15 @@ public class WordMatcher : MonoBehaviour
 
         Debug.Log($"Checking input letter: {inputLetter} against word: {normalizedWord}"); // Log the input letter and normalized word
 
+        bool matched = false;
+
         for (int i = 0; i < normalizedWord.Length; i++)
         {
             if (normalizedWord[i] == inputLetter)
             {
                 matchedLetters[i] = true; // Record that the letter at the current position has been matched
                 Debug.Log($"Matched letter: {normalizedWord[i]} at position {i}"); // Log the matched letter and position
+                matched = true;
             }
         }
 
@@ -83,6 +86,12 @@ public class WordMatcher : MonoBehaviour
 
         // Notify the result
         OnWordMatched?.Invoke(allMatched);
+
+        // If no match found, update failed attempts
+        if (!matched)
+        {
+            matchResultManager.UpdateFailedAttempts();
+        }
     }
 
     // Existing Initialize method for backward compatibility

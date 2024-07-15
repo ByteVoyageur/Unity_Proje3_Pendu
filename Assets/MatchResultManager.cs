@@ -8,12 +8,13 @@ public class MatchResultManager : MonoBehaviour
     private Label failedLabel;
     private VisualElement keyboardContainer;
     private WordMatcher wordMatcher;
-    private GameStatsManager gameStatsManager;  // Add reference to GameStatsManager
+    private GameStatsManager gameStatsManager;
+    private HangmanAnimator hangmanAnimator;
 
-    private int maxAttemptsSuccess;  // Corrected variable name
+    private int maxAttemptsSuccess;
     private int maxAttemptsFail = 10;
     private int currentAttempts = 0;
-    public bool isGameRunning = false; // Track game running status
+    public bool isGameRunning = false;
 
     void OnEnable()
     {
@@ -23,14 +24,15 @@ public class MatchResultManager : MonoBehaviour
         successLabel = root.Q<Label>("SuccessLabel");
         failedLabel = root.Q<Label>("FailedLabel");
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
-        
+
         wordMatcher = GetComponent<WordMatcher>();
         wordMatcher.OnWordMatched += HandleWordMatched;
         wordMatcher.OnNewWordInitialized += ResetAttemptsAndResults;
 
         resultContainer.style.display = DisplayStyle.Flex;
 
-        gameStatsManager = GetComponent<GameStatsManager>(); // Initialize GameStatsManager
+        gameStatsManager = GetComponent<GameStatsManager>();
+        hangmanAnimator = GetComponent<HangmanAnimator>(); // Initialize HangmanAnimator
     }
 
     private void OnDisable()
@@ -39,24 +41,32 @@ public class MatchResultManager : MonoBehaviour
         wordMatcher.OnNewWordInitialized -= ResetAttemptsAndResults;
     }
 
-    private void HandleWordMatched(bool isMatched)
+    private void HandleWordMatched(bool allMatched)
     {
-        currentAttempts++;
-
-        if (isMatched)
+        if (allMatched)
         {
             ShowSuccess();
-            isGameRunning = false; // End the game on success
-            gameStatsManager.IncrementWinCount(); // Increment win count
+            isGameRunning = false;
+            gameStatsManager.IncrementWinCount();
             EnableNextButton();
         }
-        else if (currentAttempts >= maxAttemptsFail)
+    }
+
+    public void UpdateFailedAttempts()
+    {
+        if (isGameRunning)
         {
-            ShowFailure();
-            DisableKeyboard();
-            isGameRunning = false; // End the game on failure
-            gameStatsManager.IncrementLoseCount(); // Increment lose count
-            EnableNextButton();
+            currentAttempts++;
+            hangmanAnimator.ShowNextPart(); // Show next hangman part
+
+            if (currentAttempts >= maxAttemptsFail)
+            {
+                ShowFailure();
+                DisableKeyboard();
+                isGameRunning = false;
+                gameStatsManager.IncrementLoseCount();
+                EnableNextButton();
+            }
         }
     }
 
@@ -80,7 +90,9 @@ public class MatchResultManager : MonoBehaviour
         EnableKeyboard();
         successLabel.style.display = DisplayStyle.None;
         failedLabel.style.display = DisplayStyle.None;
-        isGameRunning = true; // Start the game on new word initialization
+        isGameRunning = true;
+
+        hangmanAnimator.ResetAnimation(); // Reset hangman animation
     }
 
     public void SetMaxAttempts(int wordLength)
