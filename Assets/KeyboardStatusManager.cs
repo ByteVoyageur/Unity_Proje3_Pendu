@@ -8,7 +8,7 @@ public class KeyboardStatusManager : MonoBehaviour
     void OnEnable()
     {
         Debug.Log("KeyboardStatusManager OnEnable called");
-        
+
         var uiDocument = GetComponent<UIDocument>();
         if (uiDocument == null)
         {
@@ -19,7 +19,7 @@ public class KeyboardStatusManager : MonoBehaviour
         VisualElement root = uiDocument.rootVisualElement;
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
-        if (keyboardContainer == null) 
+        if (keyboardContainer == null)
         {
             Debug.LogError("No keyboard container found!");
             return;
@@ -40,7 +40,7 @@ public class KeyboardStatusManager : MonoBehaviour
 
     private void UpdateButtonStatus(Button button)
     {
-        if (button.ClassListContains("used-button")) 
+        if (button.ClassListContains("used-button"))
         {
             Debug.Log($"Button {button.text} already updated");
             return;
@@ -54,7 +54,7 @@ public class KeyboardStatusManager : MonoBehaviour
 
     public void ResetKeyboardStatus()
     {
-        if (keyboardContainer == null) 
+        if (keyboardContainer == null)
         {
             Debug.LogError("No keyboard container found!");
             return;
@@ -62,7 +62,7 @@ public class KeyboardStatusManager : MonoBehaviour
 
         foreach (VisualElement element in keyboardContainer.Children())
         {
-            if (element is Button button && button.ClassListContains("used-button")) 
+            if (element is Button button && button.ClassListContains("used-button"))
             {
                 button.RemoveFromClassList("used-button");
                 button.text = button.name.ToUpper();
@@ -70,5 +70,16 @@ public class KeyboardStatusManager : MonoBehaviour
         }
 
         Debug.Log("Keyboard status reset successfully!");
+    }
+
+    public void DisableKeyboard()
+    {
+        foreach (VisualElement element in keyboardContainer.Children())
+        {
+            if (element is Button button && button.name != "next-button")
+            {
+                button.SetEnabled(false);
+            }
+        }
     }
 }

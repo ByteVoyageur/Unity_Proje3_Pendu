@@ -10,6 +10,7 @@ public class MatchResultManager : MonoBehaviour
     private WordMatcher wordMatcher;
     private GameStatsManager gameStatsManager;
     private HangmanAnimator hangmanAnimator;
+    private KeyboardStatusManager keyboardStatusManager;
 
     private int maxAttemptsSuccess;
     private int maxAttemptsFail = 10;
@@ -33,6 +34,7 @@ public class MatchResultManager : MonoBehaviour
 
         gameStatsManager = GetComponent<GameStatsManager>();
         hangmanAnimator = GetComponent<HangmanAnimator>(); // Initialize HangmanAnimator
+        keyboardStatusManager = GetComponent<KeyboardStatusManager>(); // Initialize KeyboardStatusManager
     }
 
     private void OnDisable()
@@ -48,6 +50,7 @@ public class MatchResultManager : MonoBehaviour
             ShowSuccess();
             isGameRunning = false;
             gameStatsManager.IncrementWinCount();
+            keyboardStatusManager.DisableKeyboard(); // Disable the keyboard after success
             EnableNextButton();
         }
     }

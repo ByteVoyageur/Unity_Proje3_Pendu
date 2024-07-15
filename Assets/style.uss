@@ -51,11 +51,14 @@
 
 .base {
     position: absolute;
-    width: 158px;
+    width: 185px;
     height: 8px;
     bottom: 20px;
     left: 82px;
     background-color: black;
+    transition: width 0.6s ease-in-out;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
 }
 
 .vertical-pole {
