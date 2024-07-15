@@ -17,6 +17,6 @@ public static class WordNormalizer
             }
         }
 
-        return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper(); // Ensure the string is uppercase
+        return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper(); 
     }
 }

@@ -9,7 +9,18 @@
                     <ui:Label tabindex="-1" text="SUCCESS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SuccessLabel" class="success-label" />
                     <ui:Label tabindex="-1" text="FAILD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FailedLabel" class="failed-label" />
                 </ui:VisualElement>
-                <ui:VisualElement name="AnimationContainer" class="animation-container" style="flex-grow: 1;" />
+                <ui:VisualElement name="AnimationContainer" class="animation-container" style="flex-grow: 1;">
+                    <ui:VisualElement name="Base" class="base" />
+                    <ui:VisualElement name="VerticalPole" class="vertical-pole" />
+                    <ui:VisualElement name="Support" class="support" />
+                    <ui:VisualElement name="Rope" class="rope" />
+                    <ui:VisualElement name="Head" class="head" />
+                    <ui:VisualElement name="LeftArm" class="left-arm" />
+                    <ui:VisualElement name="RightArm" class="right-arm" />
+                    <ui:VisualElement name="Body" class="body" />
+                    <ui:VisualElement name="LeftLeg" class="left-leg" />
+                    <ui:VisualElement name="RightLeg" class="right-leg" />
+                </ui:VisualElement>
                 <ui:VisualElement name="ScoreContainer" class="score-container" style="flex-grow: 1;">
                     <ui:Label tabindex="-1" text="score win" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreWin" class="score-win" />
                     <ui:Label tabindex="-1" text="score faild" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreFailed" class="score-faild" />
