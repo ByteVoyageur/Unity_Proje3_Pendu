@@ -51,20 +51,37 @@
 
 .base {
     position: absolute;
-    width: 185px;
+    width: 0;
     height: 8px;
     bottom: 20px;
     left: 82px;
     background-color: black;
-    transition: width 0.6s ease-in-out;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-out;
+    transition: width 1.5s ease-in-out;
+}
+
+.base-visible {
+    width: 185px;
+    position: absolute;
+    height: 8px;
+    bottom: 20px;
+    left: 82px;
+    background-color: black;
 }
 
 .vertical-pole {
     position: absolute;
     width: 6px;
+    height: 0;
+    bottom: 22px;
+    left: 99px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.verticalpole-visible {
     height: 158px;
+    position: absolute;
+    width: 6px;
     bottom: 22px;
     left: 99px;
     background-color: black;
@@ -72,7 +89,17 @@
 
 .support {
     position: absolute;
+    width: 0;
+    height: 5px;
+    bottom: 175px;
+    left: 100px;
+    background-color: black;
+    transition: width 1.5s ease-in-out;
+}
+
+.support-visible {
     width: 107px;
+    position: absolute;
     height: 5px;
     bottom: 175px;
     left: 100px;
@@ -82,7 +109,17 @@
 .rope {
     position: absolute;
     width: 5px;
+    height: 0;
+    top: 20px;
+    left: 165px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.rope-visible {
     height: 40px;
+    position: absolute;
+    width: 5px;
     top: 20px;
     left: 165px;
     background-color: black;
@@ -90,8 +127,19 @@
 
 .head {
     position: absolute;
+    width: 0;
+    height: 0;
+    top: 58px;
+    left: 153px;
+    border-radius: 50%;
+    background-color: black;
+    transition: width 1.5s ease-in-out, height 1.5s ease-in-out;
+}
+
+.head-visible {
     width: 30px;
     height: 30px;
+    position: absolute;
     top: 58px;
     left: 153px;
     border-radius: 50%;
@@ -101,7 +149,17 @@
 .body {
     position: absolute;
     width: 5px;
+    height: 0;
+    top: 84px;
+    left: 165px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.body-visible {
     height: 50px;
+    position: absolute;
+    width: 5px;
     top: 84px;
     left: 165px;
     background-color: black;
@@ -110,7 +168,17 @@
 .left-arm {
     position: absolute;
     width: 5px;
+    height: 0;
+    top: 93px;
+    left: 156px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.leftarm-visible {
     height: 20px;
+    position: absolute;
+    width: 5px;
     top: 93px;
     left: 156px;
     background-color: black;
@@ -120,7 +188,17 @@
 .right-arm {
     position: absolute;
     width: 5px;
+    height: 0;
+    top: 93px;
+    left: 174px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.rightarm-visible {
     height: 20px;
+    position: absolute;
+    width: 5px;
     top: 93px;
     left: 174px;
     background-color: black;
@@ -130,7 +208,17 @@
 .left-leg {
     position: absolute;
     width: 5px;
+    height: 0;
+    top: 126px;
+    left: 155px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.leftleg-visible {
     height: 25px;
+    position: absolute;
+    width: 5px;
     top: 126px;
     left: 155px;
     background-color: black;
@@ -140,7 +228,17 @@
 .right-leg {
     position: absolute;
     width: 5px;
+    height: 0;
+    top: 126px;
+    left: 175px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.rightleg-visible {
     height: 25px;
+    position: absolute;
+    width: 5px;
     top: 126px;
     left: 175px;
     background-color: black;

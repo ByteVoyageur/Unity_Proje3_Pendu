@@ -71,8 +71,6 @@ public class WordGenerator : MonoBehaviour
 
         wordLabel.text = underscoreWord;
         hintCategoryLabel.text = category;
-
-        Debug.Log($"Selected Word: {word}, Category: {category}");
     }
 
     [System.Serializable]

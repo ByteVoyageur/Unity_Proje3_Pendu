@@ -46,7 +46,6 @@ public class KeyboardGenerator : MonoBehaviour
     private void HandleButtonClick(Button button)
     {
         char inputLetter = button.text.ToUpper()[0];
-        Debug.Log("Button Clicked: " + button.name );
         wordMatcher.OnButtonClick(inputLetter);
     }
 }

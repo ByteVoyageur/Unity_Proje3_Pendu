@@ -7,8 +7,6 @@ public class KeyboardStatusManager : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("KeyboardStatusManager OnEnable called");
-
         var uiDocument = GetComponent<UIDocument>();
         if (uiDocument == null)
         {
@@ -31,7 +29,6 @@ public class KeyboardStatusManager : MonoBehaviour
             {
                 button.clicked += () =>
                 {
-                    Debug.Log($"Button {button.text} clicked");
                     UpdateButtonStatus(button);
                 };
             }
@@ -46,10 +43,8 @@ public class KeyboardStatusManager : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Updating status for button {button.text}");
         button.AddToClassList("used-button");
         button.text = "X";
-        Debug.Log($"Button {button.text} updated with class used-button");
     }
 
     public void ResetKeyboardStatus()

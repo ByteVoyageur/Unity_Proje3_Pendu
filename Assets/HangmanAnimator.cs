@@ -31,7 +31,12 @@ public class HangmanAnimator : MonoBehaviour
         currentPartIndex = 0;
         foreach (var part in hangmanParts)
         {
-            part.style.display = DisplayStyle.None;
+            if (part != null)
+            {
+                string partName = part.name.ToLower();
+                part.RemoveFromClassList($"{partName}-visible");
+                part.style.display = DisplayStyle.None;
+            }
         }
     }
 
@@ -39,8 +44,15 @@ public class HangmanAnimator : MonoBehaviour
     {
         if (currentPartIndex < hangmanParts.Length)
         {
-            hangmanParts[currentPartIndex].style.display = DisplayStyle.Flex;
-            currentPartIndex++;
+            var part = hangmanParts[currentPartIndex];
+            if (part != null)
+            {
+                string partName = part.name.ToLower();
+                part.style.display = DisplayStyle.Flex;
+                part.AddToClassList($"{partName}-visible");
+
+                currentPartIndex++;
+            }
         }
     }
 }

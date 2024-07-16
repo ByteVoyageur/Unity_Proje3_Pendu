@@ -48,8 +48,6 @@ public class WordMatcher : MonoBehaviour
         if (inputDisabled)
             return;
 
-        Debug.Log($"Checking input letter: {inputLetter} against word: {normalizedWord}"); // Log the input letter and normalized word
-
         bool matched = false;
 
         for (int i = 0; i < normalizedWord.Length; i++)
