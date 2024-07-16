@@ -14,6 +14,7 @@
 .display-area {
     background-color: rgb(82, 162, 236);
     flex-direction: row;
+    height: 50%;
 }
 
 .result-label {
@@ -44,8 +45,8 @@
 
 .animation-container {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 222px;
+    height: 266px;
     margin: 0 auto;
 }
 
@@ -120,7 +121,7 @@
     height: 40px;
     position: absolute;
     width: 5px;
-    top: 20px;
+    top: 88px;
     left: 165px;
     background-color: black;
 }
@@ -140,7 +141,7 @@
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 58px;
+    top: 117px;
     left: 153px;
     border-radius: 50%;
     background-color: black;
@@ -160,7 +161,7 @@
     height: 50px;
     position: absolute;
     width: 5px;
-    top: 84px;
+    top: 144px;
     left: 165px;
     background-color: black;
 }
@@ -179,7 +180,7 @@
     height: 20px;
     position: absolute;
     width: 5px;
-    top: 93px;
+    top: 148px;
     left: 156px;
     background-color: black;
     rotate: 45deg;
@@ -199,7 +200,7 @@
     height: 20px;
     position: absolute;
     width: 5px;
-    top: 93px;
+    top: 147px;
     left: 174px;
     background-color: black;
     rotate: -45deg;
@@ -219,7 +220,7 @@
     height: 25px;
     position: absolute;
     width: 5px;
-    top: 126px;
+    top: 187px;
     left: 155px;
     background-color: black;
     rotate: 45deg;
@@ -239,7 +240,7 @@
     height: 25px;
     position: absolute;
     width: 5px;
-    top: 126px;
+    top: 187px;
     left: 175px;
     background-color: black;
     rotate: -45deg;
@@ -257,6 +258,7 @@
 }
 
 .key-board {
+    height: 50%;
 }
 
 .keyboard-buttons {
@@ -270,11 +272,12 @@
     padding-bottom: 4px;
     padding-left: 4px;
     height: 50%;
+    align-items: stretch;
 }
 
 .keyboard-button {
-    width: 117px;
-    height: 103px;
+    width: 101px;
+    height: 95px;
     -unity-font-style: bold;
     font-size: 40px;
     margin: 5px;

@@ -33,13 +33,15 @@ public class WordMatcher : MonoBehaviour
         normalizedWord = normalized; // Use the normalized word for matching
         matchedLetters = new bool[currentWord.Length]; // Initialize matchedLetters array
         inputDisabled = false; // Enable input on new word initialization
-        Debug.Log($"Initialized with word: {currentWord}, normalized: {normalizedWord}");
 
         // Notify new word initialization
         OnNewWordInitialized?.Invoke();
 
         // Set max attempts in MatchResultManager
         matchResultManager.SetMaxAttempts(currentWord.Length);
+
+        // Update the word label
+        UpdateWordLabel();
     }
 
     // Handle button click event
@@ -55,34 +57,15 @@ public class WordMatcher : MonoBehaviour
             if (normalizedWord[i] == inputLetter)
             {
                 matchedLetters[i] = true; // Record that the letter at the current position has been matched
-                Debug.Log($"Matched letter: {normalizedWord[i]} at position {i}"); // Log the matched letter and position
                 matched = true;
             }
         }
 
-        // Build new rich text string with matching letters in green and underscores for unmatched letters
-        string richText = "";
-        bool allMatched = true;
-        for (int i = 0; i < currentWord.Length; i++)
-        {
-            if (matchedLetters[i])
-            {
-                richText += $"<color=#90EE90>{currentWord[i]}</color>";
-            }
-            else
-            {
-                richText += "_";
-                allMatched = false;
-            }
-        }
-
-        // Log the resulting rich text
-        Debug.Log($"Updated rich text: {richText}");
-
         // Update the WordLabel with the new rich text
-        wordLabel.text = richText;
+        UpdateWordLabel();
 
         // Notify the result
+        bool allMatched = !Array.Exists(matchedLetters, matched => matched == false);
         OnWordMatched?.Invoke(allMatched);
 
         // If no match found, update failed attempts
@@ -90,6 +73,28 @@ public class WordMatcher : MonoBehaviour
         {
             matchResultManager.UpdateFailedAttempts();
         }
+    }
+
+    // Update the WordLabel with the current state of matched letters
+    public void UpdateWordLabel(bool showAllLetters = false)
+    {
+        string richText = "";
+        for (int i = 0; i < currentWord.Length; i++)
+        {
+            if (matchedLetters[i])
+            {
+                richText += $"<color=#90EE90>{currentWord[i]}</color>";
+            }
+            else if (showAllLetters)
+            {
+                richText += $"<color=#FF0000>{currentWord[i]}</color>";
+            }
+            else
+            {
+                richText += "_";
+            }
+        }
+        wordLabel.text = richText;
     }
 
     // Existing Initialize method for backward compatibility

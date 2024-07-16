@@ -65,6 +65,7 @@ public class MatchResultManager : MonoBehaviour
             if (currentAttempts >= maxAttemptsFail)
             {
                 ShowFailure();
+                wordMatcher.UpdateWordLabel(true); // Show all letters in red for unmatched ones
                 DisableKeyboard();
                 isGameRunning = false;
                 gameStatsManager.IncrementLoseCount();
