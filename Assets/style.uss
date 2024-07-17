@@ -1,8 +1,9 @@
 .game-start {
     width: 100%;
     height: 100%;
-    background-color: rgb(83, 163, 236);
     flex-direction: row;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/PNG/fond-hangman.jpg?fileID=21300000&guid=64e1dc3a9efe96b428d87054e07a031a&type=3#fond-hangman");
+    -unity-background-scale-mode: scale-and-crop;
 }
 
 .zone-interaction {
@@ -12,7 +13,6 @@
 }
 
 .display-area {
-    background-color: rgb(82, 162, 236);
     flex-direction: row;
     height: 50%;
 }
@@ -45,9 +45,13 @@
 
 .animation-container {
     position: relative;
-    width: 222px;
-    height: 266px;
+    width: 133px;
+    height: 231px;
     margin: 0 auto;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    top: 12%;
+    right: 0;
+    left: 55px;
 }
 
 .base {
@@ -121,7 +125,7 @@
     height: 40px;
     position: absolute;
     width: 5px;
-    top: 88px;
+    top: 56px;
     left: 165px;
     background-color: black;
 }
@@ -141,7 +145,7 @@
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 117px;
+    top: 96px;
     left: 153px;
     border-radius: 50%;
     background-color: black;
@@ -161,7 +165,7 @@
     height: 50px;
     position: absolute;
     width: 5px;
-    top: 144px;
+    top: 124px;
     left: 165px;
     background-color: black;
 }
@@ -180,7 +184,7 @@
     height: 20px;
     position: absolute;
     width: 5px;
-    top: 148px;
+    top: 128px;
     left: 156px;
     background-color: black;
     rotate: 45deg;
@@ -200,7 +204,7 @@
     height: 20px;
     position: absolute;
     width: 5px;
-    top: 147px;
+    top: 128px;
     left: 174px;
     background-color: black;
     rotate: -45deg;
@@ -220,7 +224,7 @@
     height: 25px;
     position: absolute;
     width: 5px;
-    top: 187px;
+    top: 169px;
     left: 155px;
     background-color: black;
     rotate: 45deg;
@@ -240,7 +244,7 @@
     height: 25px;
     position: absolute;
     width: 5px;
-    top: 187px;
+    top: 169px;
     left: 175px;
     background-color: black;
     rotate: -45deg;
@@ -259,6 +263,7 @@
 
 .key-board {
     height: 50%;
+    align-self: center;
 }
 
 .keyboard-buttons {
@@ -266,17 +271,19 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    width: 100%;
+    width: 90%;
     padding-top: 4px;
     padding-right: 4px;
     padding-bottom: 4px;
     padding-left: 4px;
     height: 50%;
-    align-items: stretch;
+    align-items: center;
 }
 
 .keyboard-button {
-    width: 101px;
+    background-color: transparent;
+    border-color: transparent;
+    width: 95px;
     height: 95px;
     -unity-font-style: bold;
     font-size: 40px;
@@ -288,6 +295,7 @@
     padding-right: 0;
     padding-bottom: 0;
     padding-left: 0;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=2121966&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_47");
 }
 
 .used-button {
@@ -296,11 +304,13 @@
 }
 
 .next-button-class {
+    background-color: transparent;
+    border-color: center;
     width: 450px;
     height: 150px;
-    background-color: rgb(144, 238, 144);
     color: white;
     font-size: 50px;
     width: 223px;
     height: 107px;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-304149937&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_48");
 }
