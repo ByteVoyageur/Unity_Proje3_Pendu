@@ -25,7 +25,7 @@ public class KeyboardStatusManager : MonoBehaviour
 
         foreach (VisualElement element in keyboardContainer.Children())
         {
-            if (element is Button button && button.name != "next-button") // Exclude the Next button
+            if (element is Button button && button.name != "next-button" && button.name != "return-button") 
             {
                 button.clicked += () =>
                 {
@@ -44,7 +44,6 @@ public class KeyboardStatusManager : MonoBehaviour
         }
 
         button.AddToClassList("used-button");
-        button.text = "X";
     }
 
     public void ResetKeyboardStatus()
@@ -63,15 +62,13 @@ public class KeyboardStatusManager : MonoBehaviour
                 button.text = button.name.ToUpper();
             }
         }
-
-        Debug.Log("Keyboard status reset successfully!");
     }
 
     public void DisableKeyboard()
     {
         foreach (VisualElement element in keyboardContainer.Children())
         {
-            if (element is Button button && button.name != "next-button")
+            if (element is Button button && button.name != "next-button" && button.name != "return-button")
             {
                 button.SetEnabled(false);
             }

@@ -108,7 +108,7 @@ public class MatchResultManager : MonoBehaviour
     {
         foreach (VisualElement element in keyboardContainer.Children())
         {
-            if (element is Button button && button.name != "next-button")
+            if (element is Button button && button.name != "next-button" && button.name != "return-button")
             {
                 button.SetEnabled(false);
             }

@@ -299,11 +299,10 @@
 }
 
 .used-button {
-    background-color: rgb(255, 102, 102);
-    color: white;
+    color: transparent;
 }
 
-.next-button-class {
+.next-button-class, .return-button-class {
     background-color: transparent;
     border-color: center;
     width: 450px;

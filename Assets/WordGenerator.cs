@@ -47,6 +47,7 @@ public class WordGenerator : MonoBehaviour
                     string randomWord = words[0].name.ToUpper();
                     string category = words[0].categorie;
 
+                    Debug.Log($"Random Word: {randomWord}");
                     SetWordAndCategoryToLabel(randomWord, category);
                     wordMatcher.Initialize(randomWord, WordNormalizer.NormalizeString(randomWord));
                     

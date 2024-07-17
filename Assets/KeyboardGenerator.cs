@@ -1,10 +1,10 @@
-using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class KeyboardGenerator : MonoBehaviour
 {
     private NextButtonHandler nextButtonHandler;
+    private MenuController menuController;
     private WordMatcher wordMatcher;
 
     void OnEnable()
@@ -40,7 +40,16 @@ public class KeyboardGenerator : MonoBehaviour
         keyboardContainer.Add(nextButton);
 
         // Bind the method from NextButtonHandler
-        nextButton.clicked += nextButtonHandler.OnNextButtonClick;  
+        nextButton.clicked += nextButtonHandler.OnNextButtonClick;
+
+        // Add a "Return" button
+        Button returnButton = new Button() { text = "Return" };
+        returnButton.name = "return-button";
+        returnButton.AddToClassList("return-button-class");
+        keyboardContainer.Add(returnButton);
+
+        // Find the MenuController component in the parent or root GameObject
+        
     }
 
     private void HandleButtonClick(Button button)
