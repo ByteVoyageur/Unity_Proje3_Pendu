@@ -6,14 +6,23 @@ public class KeyboardGenerator : MonoBehaviour
     private NextButtonHandler nextButtonHandler;
     private MenuController menuController;
     private WordMatcher wordMatcher;
+    private SoundManager soundManager;
 
     void OnEnable()
     {
+        // Find the SoundManager
+        soundManager = FindObjectOfType<SoundManager>();
+
+        if (soundManager == null)
+        {
+            Debug.LogError("SoundManager is not found in the scene.");
+            return;
+        }
+
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         VisualElement keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-
         wordMatcher = GetComponent<WordMatcher>();
 
         foreach (char letter in alphabet)
@@ -26,11 +35,10 @@ public class KeyboardGenerator : MonoBehaviour
             button.clicked += () => HandleButtonClick(button);
         }
 
-        // Find the NextButtonHandler component
         nextButtonHandler = GetComponent<NextButtonHandler>();
         if (nextButtonHandler == null)
         {
-            nextButtonHandler = gameObject.AddComponent<NextButtonHandler>(); // ensure NextButtonHandler exists
+            nextButtonHandler = gameObject.AddComponent<NextButtonHandler>();
         }
 
         // Add a "Next" button
@@ -39,8 +47,12 @@ public class KeyboardGenerator : MonoBehaviour
         nextButton.AddToClassList("next-button-class");
         keyboardContainer.Add(nextButton);
 
-        // Bind the method from NextButtonHandler
-        nextButton.clicked += nextButtonHandler.OnNextButtonClick;
+        // Bind the method from NextButtonHandler and play click sound
+        nextButton.clicked += () =>
+        {
+            soundManager.PlayNomalClickSound(); // Play normal click sound
+            nextButtonHandler.OnNextButtonClick();
+        };
 
         // Add a "Return" button
         Button returnButton = new Button() { text = "Return" };
@@ -48,13 +60,26 @@ public class KeyboardGenerator : MonoBehaviour
         returnButton.AddToClassList("return-button-class");
         keyboardContainer.Add(returnButton);
 
-        // Find the MenuController component in the parent or root GameObject
-        
+        // Only play the sound for the Return button click
+        returnButton.clicked += () =>
+        {
+            soundManager.PlayNomalClickSound(); // Play normal click sound
+        };
     }
 
     private void HandleButtonClick(Button button)
     {
         char inputLetter = button.text.ToUpper()[0];
-        wordMatcher.OnButtonClick(inputLetter);
+        bool isMatched = wordMatcher.OnButtonClick(inputLetter); // Call WordMatcher to determine if the input letter is a match
+
+        // Play the appropriate sound based on whether the input letter matches
+        if (isMatched)
+        {
+            soundManager.PlayNomalClickSound();
+        }
+        else
+        {
+            soundManager.PlayErrorClickSound();
+        }
     }
 }

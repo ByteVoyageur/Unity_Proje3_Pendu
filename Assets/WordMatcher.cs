@@ -44,35 +44,37 @@ public class WordMatcher : MonoBehaviour
         UpdateWordLabel();
     }
 
-    // Handle button click event
-    public void OnButtonClick(char inputLetter)
+    // Handle button click event and return whether the input has matched any letter
+    public bool OnButtonClick(char inputLetter)
     {
-        if (inputDisabled)
-            return;
+    if (inputDisabled)
+        return false;
 
-        bool matched = false;
+    bool matched = false;
 
-        for (int i = 0; i < normalizedWord.Length; i++)
+    for (int i = 0; i < normalizedWord.Length; i++)
+    {
+        if (normalizedWord[i] == inputLetter)
         {
-            if (normalizedWord[i] == inputLetter)
-            {
-                matchedLetters[i] = true; // Record that the letter at the current position has been matched
-                matched = true;
-            }
+            matchedLetters[i] = true; // Record that the letter at the current position has been matched
+            matched = true;
         }
+    }
 
-        // Update the WordLabel with the new rich text
-        UpdateWordLabel();
+    // Update the WordLabel with the new rich text
+    UpdateWordLabel();
 
-        // Notify the result
-        bool allMatched = !Array.Exists(matchedLetters, matched => matched == false);
-        OnWordMatched?.Invoke(allMatched);
+    // Notify the result
+    bool allMatched = !Array.Exists(matchedLetters, matched => matched == false);
+    OnWordMatched?.Invoke(allMatched);
 
-        // If no match found, update failed attempts
-        if (!matched)
-        {
-            matchResultManager.UpdateFailedAttempts();
-        }
+    // If no match found, update failed attempts
+    if (!matched)
+    {
+        matchResultManager.UpdateFailedAttempts();
+    }
+
+    return matched;
     }
 
     // Update the WordLabel with the current state of matched letters

@@ -458,6 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winSound: {fileID: 8300000, guid: c73356c2e7c5bc54ead17ebacd05c76d, type: 3}
   loseSound: {fileID: 8300000, guid: 52f73b29dceb0f24c98bf99892043115, type: 3}
+  nomalClickSound: {fileID: 8300000, guid: b1cd3867239dc5941b0092e26ae38976, type: 3}
+  errorClickSound: {fileID: 8300000, guid: 0fcc5cc9bac120b409435482d209988e, type: 3}
 --- !u!4 &999961443
 Transform:
   m_ObjectHideFlags: 0
