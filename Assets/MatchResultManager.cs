@@ -16,6 +16,7 @@ public class MatchResultManager : MonoBehaviour
     private int maxAttemptsFail = 10;
     private int currentAttempts = 0;
     public bool isGameRunning = false;
+    private SoundManager soundManager;
 
     void OnEnable()
     {
@@ -35,6 +36,8 @@ public class MatchResultManager : MonoBehaviour
         gameStatsManager = GetComponent<GameStatsManager>();
         hangmanAnimator = GetComponent<HangmanAnimator>(); // Initialize HangmanAnimator
         keyboardStatusManager = GetComponent<KeyboardStatusManager>(); // Initialize KeyboardStatusManager
+
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void OnDisable()
@@ -52,6 +55,9 @@ public class MatchResultManager : MonoBehaviour
             gameStatsManager.IncrementWinCount();
             keyboardStatusManager.DisableKeyboard(); // Disable the keyboard after success
             EnableNextButton();
+
+            // Play win sound
+            soundManager.PlayWinSound();
         }
     }
 
@@ -70,6 +76,9 @@ public class MatchResultManager : MonoBehaviour
                 isGameRunning = false;
                 gameStatsManager.IncrementLoseCount();
                 EnableNextButton();
+
+                // Play lose sound
+                soundManager.PlayLoseSound();
             }
         }
     }

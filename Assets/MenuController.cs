@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
     public GameObject gameStart;
     private Button startButton;
 
-    void Start()
+    void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
         startButton = root.Q<Button>("Start");

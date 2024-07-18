@@ -36,7 +36,6 @@ public class NextButtonHandler : MonoBehaviour
 
     public void OnNextButtonClick()
     {
-        Debug.Log("Next button clicked!");
 
         if (matchResultManager == null)
         {
