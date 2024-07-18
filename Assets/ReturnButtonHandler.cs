@@ -9,7 +9,7 @@ public class ReturnButtonHandler : MonoBehaviour
     public GameObject gameStart;
     private Button returnButton;
 
-    void Start()
+    void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
         returnButton = root.Q<Button>("return-button");
