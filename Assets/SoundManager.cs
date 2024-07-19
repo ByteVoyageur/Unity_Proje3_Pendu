@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip errorClickSound;
     public AudioSource victoirSource;
     public AudioSource lossSource;
+    public AudioSource growupSource;
     private AudioSource audioSource;
 
     void Start()
@@ -39,5 +40,10 @@ public class SoundManager : MonoBehaviour
     {
         audioSource.clip= errorClickSound;
         audioSource.Play();
+    }
+
+    public void PlayGrowUpSound()
+    {
+        growupSource.Play();
     }
 }

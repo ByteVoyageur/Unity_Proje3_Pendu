@@ -6,9 +6,13 @@ public class HangmanAnimator : MonoBehaviour
     private VisualElement[] hangmanParts;
     private int currentPartIndex = 0;
 
+    // Public reference to SoundManager
+    public SoundManager soundManager;
+
     void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        soundManager = FindObjectOfType<SoundManager>();
 
         // Initialize hangman parts
         hangmanParts = new VisualElement[10];
@@ -50,6 +54,17 @@ public class HangmanAnimator : MonoBehaviour
                 string partName = part.name.ToLower();
                 part.style.display = DisplayStyle.Flex;
                 part.AddToClassList($"{partName}-visible");
+
+                // Ensure soundManager instance is assigned and then call PlayGrowUpSound()
+                if (soundManager != null)
+                {
+                    soundManager.PlayGrowUpSound();
+                }
+                else
+                {
+                    Debug.LogWarning("SoundManager is not assigned in the HangmanAnimator script.");
+                }
+
                 currentPartIndex++;
             }
         }
