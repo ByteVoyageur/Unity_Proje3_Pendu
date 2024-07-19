@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class KeyboardStatusManager : MonoBehaviour
 {
     private VisualElement keyboardContainer;
+
+    public event Action<Button> OnButtonUsed;
 
     void OnEnable()
     {
@@ -25,11 +28,12 @@ public class KeyboardStatusManager : MonoBehaviour
 
         foreach (VisualElement element in keyboardContainer.Children())
         {
-            if (element is Button button && button.name != "next-button" && button.name != "return-button") 
+            if (element is Button button && button.name != "next-button" && button.name != "return-button")
             {
                 button.clicked += () =>
                 {
                     UpdateButtonStatus(button);
+                    OnButtonUsed?.Invoke(button);
                 };
             }
         }
@@ -71,6 +75,17 @@ public class KeyboardStatusManager : MonoBehaviour
             if (element is Button button && button.name != "next-button" && button.name != "return-button")
             {
                 button.SetEnabled(false);
+            }
+        }
+    }
+
+    public void EnableKeyboard()
+    {
+        foreach (VisualElement element in keyboardContainer.Children())
+        {
+            if (element is Button button)
+            {
+                button.SetEnabled(true);
             }
         }
     }

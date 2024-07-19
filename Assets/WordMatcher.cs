@@ -2,20 +2,20 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-// This class handles user input and matches it against the current word
 public class WordMatcher : MonoBehaviour
 {
     private string currentWord;
     private string normalizedWord;
     private Label wordLabel;
     private VisualElement keyboardContainer;
-    private bool[] matchedLetters; // Array to keep track of matched letters
-    private bool inputDisabled = false; // Flag to disable input after max attempts
+    private bool[] matchedLetters;
+    private bool inputDisabled = false;
 
-    public event Action<bool> OnWordMatched; // Event to notify word match result
-    public event Action OnNewWordInitialized; // Event to notify new word initialization
+    public event Action<bool> OnWordMatched;
+    public event Action OnNewWordInitialized;
 
     private MatchResultManager matchResultManager;
+    private KeyboardStatusManager keyboardStatusManager;
 
     void OnEnable()
     {
@@ -24,60 +24,52 @@ public class WordMatcher : MonoBehaviour
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
 
         matchResultManager = GetComponent<MatchResultManager>();
+        keyboardStatusManager = GetComponent<KeyboardStatusManager>();
+
+        keyboardStatusManager.OnButtonUsed += HandleButtonUsed;
     }
 
-    // Initialize the current word and its normalized version
     public void Initialize(string word, string normalized)
     {
-        currentWord = word; // Keep the original word for display
-        normalizedWord = normalized; // Use the normalized word for matching
-        matchedLetters = new bool[currentWord.Length]; // Initialize matchedLetters array
-        inputDisabled = false; // Enable input on new word initialization
+        currentWord = word;
+        normalizedWord = normalized;
+        matchedLetters = new bool[currentWord.Length];
+        inputDisabled = false;
 
-        // Notify new word initialization
         OnNewWordInitialized?.Invoke();
-
-        // Set max attempts in MatchResultManager
         matchResultManager.SetMaxAttempts(currentWord.Length);
-
-        // Update the word label
         UpdateWordLabel();
     }
 
-    // Handle button click event and return whether the input has matched any letter
     public bool OnButtonClick(char inputLetter)
     {
-    if (inputDisabled)
-        return false;
+        if (inputDisabled)
+            return false;
 
-    bool matched = false;
+        bool matched = false;
 
-    for (int i = 0; i < normalizedWord.Length; i++)
-    {
-        if (normalizedWord[i] == inputLetter)
+        for (int i = 0; i < normalizedWord.Length; i++)
         {
-            matchedLetters[i] = true; // Record that the letter at the current position has been matched
-            matched = true;
+            if (normalizedWord[i] == inputLetter)
+            {
+                matchedLetters[i] = true;
+                matched = true;
+            }
         }
+
+        UpdateWordLabel();
+
+        bool allMatched = !Array.Exists(matchedLetters, matched => matched == false);
+        OnWordMatched?.Invoke(allMatched);
+
+        if (!matched)
+        {
+            matchResultManager.UpdateFailedAttempts();
+        }
+
+        return matched;
     }
 
-    // Update the WordLabel with the new rich text
-    UpdateWordLabel();
-
-    // Notify the result
-    bool allMatched = !Array.Exists(matchedLetters, matched => matched == false);
-    OnWordMatched?.Invoke(allMatched);
-
-    // If no match found, update failed attempts
-    if (!matched)
-    {
-        matchResultManager.UpdateFailedAttempts();
-    }
-
-    return matched;
-    }
-
-    // Update the WordLabel with the current state of matched letters
     public void UpdateWordLabel(bool showAllLetters = false)
     {
         string richText = "";
@@ -99,9 +91,13 @@ public class WordMatcher : MonoBehaviour
         wordLabel.text = richText;
     }
 
-    // Existing Initialize method for backward compatibility
     public void Initialize(string word)
     {
-        Initialize(word, WordNormalizer.NormalizeString(word)); // Call the new Initialize method with normalized word
+        Initialize(word, WordNormalizer.NormalizeString(word));
+    }
+
+    private void HandleButtonUsed(Button button)
+    {
+        button.SetEnabled(false);
     }
 }

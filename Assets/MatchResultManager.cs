@@ -11,12 +11,12 @@ public class MatchResultManager : MonoBehaviour
     private GameStatsManager gameStatsManager;
     private HangmanAnimator hangmanAnimator;
     private KeyboardStatusManager keyboardStatusManager;
+    private SoundManager soundManager;
 
     private int maxAttemptsSuccess;
     private int maxAttemptsFail = 10;
     private int currentAttempts = 0;
     public bool isGameRunning = false;
-    private SoundManager soundManager;
 
     void OnEnable()
     {
@@ -34,8 +34,8 @@ public class MatchResultManager : MonoBehaviour
         resultContainer.style.display = DisplayStyle.Flex;
 
         gameStatsManager = GetComponent<GameStatsManager>();
-        hangmanAnimator = GetComponent<HangmanAnimator>(); // Initialize HangmanAnimator
-        keyboardStatusManager = GetComponent<KeyboardStatusManager>(); // Initialize KeyboardStatusManager
+        hangmanAnimator = GetComponent<HangmanAnimator>();
+        keyboardStatusManager = GetComponent<KeyboardStatusManager>();
 
         soundManager = FindObjectOfType<SoundManager>();
     }
@@ -53,10 +53,8 @@ public class MatchResultManager : MonoBehaviour
             ShowSuccess();
             isGameRunning = false;
             gameStatsManager.IncrementWinCount();
-            keyboardStatusManager.DisableKeyboard(); // Disable the keyboard after success
+            keyboardStatusManager.DisableKeyboard();
             EnableNextButton();
-
-            // Play win sound
             soundManager.PlayWinSound();
         }
     }
@@ -66,18 +64,16 @@ public class MatchResultManager : MonoBehaviour
         if (isGameRunning)
         {
             currentAttempts++;
-            hangmanAnimator.ShowNextPart(); // Show next hangman part
+            hangmanAnimator.ShowNextPart();
 
             if (currentAttempts >= maxAttemptsFail)
             {
                 ShowFailure();
-                wordMatcher.UpdateWordLabel(true); // Show all letters in red for unmatched ones
-                DisableKeyboard();
+                wordMatcher.UpdateWordLabel(true);
+                keyboardStatusManager.DisableKeyboard();
                 isGameRunning = false;
                 gameStatsManager.IncrementLoseCount();
                 EnableNextButton();
-
-                // Play lose sound
                 soundManager.PlayLoseSound();
             }
         }
@@ -100,39 +96,16 @@ public class MatchResultManager : MonoBehaviour
     private void ResetAttemptsAndResults()
     {
         currentAttempts = 0;
-        EnableKeyboard();
+        keyboardStatusManager.EnableKeyboard();
         successLabel.style.display = DisplayStyle.None;
         failedLabel.style.display = DisplayStyle.None;
         isGameRunning = true;
-
-        hangmanAnimator.ResetAnimation(); // Reset hangman animation
+        hangmanAnimator.ResetAnimation();
     }
 
     public void SetMaxAttempts(int wordLength)
     {
         maxAttemptsSuccess = wordLength;
-    }
-
-    private void DisableKeyboard()
-    {
-        foreach (VisualElement element in keyboardContainer.Children())
-        {
-            if (element is Button button && button.name != "next-button" && button.name != "return-button")
-            {
-                button.SetEnabled(false);
-            }
-        }
-    }
-
-    private void EnableKeyboard()
-    {
-        foreach (VisualElement element in keyboardContainer.Children())
-        {
-            if (element is Button button)
-            {
-                button.SetEnabled(true);
-            }
-        }
     }
 
     private void EnableNextButton()

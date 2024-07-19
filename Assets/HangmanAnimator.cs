@@ -50,7 +50,6 @@ public class HangmanAnimator : MonoBehaviour
                 string partName = part.name.ToLower();
                 part.style.display = DisplayStyle.Flex;
                 part.AddToClassList($"{partName}-visible");
-
                 currentPartIndex++;
             }
         }
