@@ -1,3 +1,10 @@
 .background {
     background-image: url("project://database/Assets/Assets_Kenny_pack/PNG/fond-hangman.jpg?fileID=21300000&guid=64e1dc3a9efe96b428d87054e07a031a&type=3#fond-hangman");
 }
+
+.Play-direct {
+    width: 13%;
+    height: 12%;
+    top: 40%;
+    left: 42%;
+}

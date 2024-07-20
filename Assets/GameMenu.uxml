@@ -3,5 +3,6 @@
     <ui:VisualElement name="Background" class="background" style="flex-grow: 1;">
         <ui:Label tabindex="-1" text="HANGMAN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Titre" class="titre" />
         <ui:Button text="START" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Start" class="start start-button" />
+        <ui:Button text="SIGN OUT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LogOut" class="log-out" />
     </ui:VisualElement>
 </ui:UXML>

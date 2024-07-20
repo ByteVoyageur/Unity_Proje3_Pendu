@@ -1,4 +1,6 @@
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class MenuController : MonoBehaviour
@@ -7,19 +9,16 @@ public class MenuController : MonoBehaviour
     public GameObject gameStart;
     private Button startButton;
     private SoundManager soundManager;
+    private Button logOutButton;
 
     void OnEnable()
     {
         // Find the SoundManager
         soundManager = FindObjectOfType<SoundManager>();
 
-        if (soundManager == null)
-        {
-            Debug.LogError("SoundManager is not found in the scene.");
-            return;
-        }
-
         var root = GetComponent<UIDocument>().rootVisualElement;
+
+        logOutButton = root.Q<Button>("LogOut");
         startButton = root.Q<Button>("Start");
 
         if (startButton != null)
@@ -30,6 +29,8 @@ public class MenuController : MonoBehaviour
         {
             Debug.LogError("No Button with name 'Start' found!");
         }
+
+        logOutButton.clicked += OnLoginOutButtonClicked;
     }
 
     public void OnStartButtonClicked()
@@ -44,4 +45,10 @@ public class MenuController : MonoBehaviour
         gameMenu.SetActive(true);
         gameStart.SetActive(false);
     }
+
+    public void OnLoginOutButtonClicked()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
