@@ -50,7 +50,7 @@ public class KeyboardGenerator : MonoBehaviour
         // Bind the method from NextButtonHandler and play click sound
         nextButton.clicked += () =>
         {
-            soundManager.PlayNomalClickSound(); // Play normal click sound
+            soundManager.PlayNormalClickSound(); // Play normal click sound
             nextButtonHandler.OnNextButtonClick();
         };
 
@@ -63,7 +63,7 @@ public class KeyboardGenerator : MonoBehaviour
         // Only play the sound for the Return button click
         returnButton.clicked += () =>
         {
-            soundManager.PlayNomalClickSound(); // Play normal click sound
+            soundManager.PlayNormalClickSound(); // Play normal click sound
         };
     }
 
@@ -75,7 +75,7 @@ public class KeyboardGenerator : MonoBehaviour
         // Play the appropriate sound based on whether the input letter matches
         if (isMatched)
         {
-            soundManager.PlayNomalClickSound();
+            soundManager.PlayNormalClickSound();
         }
         else
         {

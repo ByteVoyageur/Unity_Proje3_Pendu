@@ -34,7 +34,7 @@ public class MenuController : MonoBehaviour
 
     public void OnStartButtonClicked()
     {
-        soundManager.PlayNomalClickSound(); // Play normal click sound
+        soundManager.PlayNormalClickSound(); 
         gameMenu.SetActive(false);
         gameStart.SetActive(true);
     }

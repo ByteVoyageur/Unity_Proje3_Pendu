@@ -77,7 +77,7 @@ public class WordMatcher : MonoBehaviour
         {
             if (matchedLetters[i])
             {
-                richText += $"<color=#90EE90>{currentWord[i]}</color>";
+                richText += $"<color=#228B22>{currentWord[i]}</color>"; // deep green
             }
             else if (showAllLetters)
             {

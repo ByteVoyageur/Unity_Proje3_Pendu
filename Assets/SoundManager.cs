@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip nomalClickSound;
     public AudioClip errorClickSound;
+    public AudioSource normalClickSound;
     public AudioSource victoirSource;
     public AudioSource lossSource;
     public AudioSource growupSource;
+
     private AudioSource audioSource;
 
     void Start()
@@ -30,10 +31,9 @@ public class SoundManager : MonoBehaviour
         // audioSource.Play();
     }
 
-    public void PlayNomalClickSound ()
+    public void PlayNormalClickSound ()
     {
-        audioSource.clip= nomalClickSound;
-        audioSource.Play();
+        normalClickSound.Play();
     }
 
     public void PlayErrorClickSound ()
