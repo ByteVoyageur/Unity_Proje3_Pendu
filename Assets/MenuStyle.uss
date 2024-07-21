@@ -34,4 +34,5 @@
     width: 15%;
     height: 11%;
     top: -9%;
+    font-size: 294%;
 }
