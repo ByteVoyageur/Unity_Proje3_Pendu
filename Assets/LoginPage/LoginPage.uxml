@@ -1,6 +1,12 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/LoginPage/Login_Page_Style.uss?fileID=7433441132597879392&amp;guid=296fb1330d3634142b0e587188d19687&amp;type=3#Login_Page_Style" />
     <ui:VisualElement name="Background" class="background" style="flex-grow: 1;">
-        <ui:Button name="PLAY" text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" class="Play-direct" />
+        <ui:VisualElement name="TitleContainer" class="title-container" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="HANGMAN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleHangman" class="title-hangman" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ButtonsContainer" class="buttons-container" style="flex-grow: 1;">
+            <ui:Button name="PLAY" text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" class="Play-direct" />
+            <ui:Button text="SIGN IN With ..." parse-escape-sequences="true" display-tooltip-when-elided="true" name="SignInWith" class="sign-in-with" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -10,7 +10,7 @@
 
 .titre {
     -unity-font-style: bold;
-    font-size: 470%;
+    font-size: 390%;
     width: 7%;
     top: -10%;
 }
@@ -19,7 +19,7 @@
     border-color: transparent;
     background-color: transparent;
     -unity-font-style: bold;
-    font-size: 25px;
+    font-size: 108%;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
     width: 29%;
     height: 16%;
@@ -27,12 +27,16 @@
     align-self: center;
     align-items: center;
     -unity-text-align: middle-center;
-    top: -13%;
+    top: -9%;
 }
 
 .log-out {
-    width: 15%;
-    height: 11%;
-    top: -9%;
-    font-size: 294%;
+    border-color: transparent;
+    background-color: transparent;
+    width: 29%;
+    height: 16%;
+    top: -4%;
+    font-size: 100%;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    -unity-font-style: bold;
 }

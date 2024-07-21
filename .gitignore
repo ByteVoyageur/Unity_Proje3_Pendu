@@ -70,3 +70,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# 忽略PlayFab密钥文件
+Assets/PlayFabEditorExtensions/Editor/Resources/PlayFabEditorPrefsSO.asset

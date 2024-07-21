@@ -15,7 +15,7 @@ MonoBehaviour:
   TitleId: AEBB7
   DeveloperSecretKey: 7Q1T9XEHAT5PIX7KK7DTOUNGHQ9UIJZZ166YPA8EM35EINUJ17
   ProductionEnvironmentUrl: 
-  RequestType: 2
+  RequestType: 0
   DisableDeviceInfo: 0
   DisableFocusTimeCollection: 0
   RequestTimeout: 2000
