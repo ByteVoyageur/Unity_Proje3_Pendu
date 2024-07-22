@@ -22,7 +22,7 @@
     font-size: 108%;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
     width: 29%;
-    height: 16%;
+    height: 14%;
     margin-top: 42px;
     align-self: center;
     align-items: center;
@@ -34,9 +34,19 @@
     border-color: transparent;
     background-color: transparent;
     width: 29%;
-    height: 16%;
+    height: 14%;
     top: -4%;
     font-size: 100%;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    -unity-font-style: bold;
+}
+
+.settings {
+    border-color: transparent;
+    background-color: transparent;
+    width: 29%;
+    height: 14%;
+    font-size: 108%;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
     -unity-font-style: bold;
 }

@@ -42,7 +42,8 @@
     left: 13%;
     top: 101%;
     width: 15%;
-    font-family: "Courier New", monospace; 
+    font-family: "Courier New", monospace;
+    letter-spacing: 29px;
 }
 
 .success-label {

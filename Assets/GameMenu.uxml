@@ -4,5 +4,6 @@
         <ui:Label tabindex="-1" text="MENU" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Titre" class="titre" />
         <ui:Button text="START" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Start" class="start start-button" />
         <ui:Button text="SIGN OUT" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LogOut" class="log-out" />
+        <ui:Button text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Settings" class="settings" />
     </ui:VisualElement>
 </ui:UXML>

@@ -47,6 +47,9 @@ public class LoginPlayDirect : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Login PlayFab with hardwareID success!");
+        // Mark the user as logged in
+        PlayerPrefs.SetInt("IsLoggedIn", 1);
+        
         // Perform actions after a successful login, e.g., load the main game scene
     }
 

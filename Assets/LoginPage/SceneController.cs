@@ -29,8 +29,14 @@ public class SceneController : MonoBehaviour
 
     void OnPlayButtonClicked()
     {
-        SceneManager.LoadScene(1);
+        if (PlayerPrefs.GetInt("IsLoggedIn") == 1)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            Debug.LogError("User is not logged in!");
+            // Display a message to the user indicating they need to log in
+        }
     }
-
-    
 }
