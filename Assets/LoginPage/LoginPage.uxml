@@ -5,8 +5,15 @@
             <ui:Label tabindex="-1" text="HANGMAN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleHangman" class="title-hangman" />
         </ui:VisualElement>
         <ui:VisualElement name="ButtonsContainer" class="buttons-container" style="flex-grow: 1;">
-            <ui:Button name="PLAY" text="PLAY" parse-escape-sequences="true" display-tooltip-when-elided="true" class="Play-direct" />
-            <ui:Button text="SIGN IN With ..." parse-escape-sequences="true" display-tooltip-when-elided="true" name="SignInWith" class="sign-in-with" />
+            <ui:Button name="PLAY" text="Play as Guest" parse-escape-sequences="true" display-tooltip-when-elied="true" class="Play-direct" />
+            <ui:Button text="Sign In to Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SignInWith" class="sign-in-with" />
+        </ui:VisualElement>
+        <!-- add a modal for username -->
+        <ui:VisualElement name="LoginDialog" class="login-dialog" visible="false">
+            <ui:Label text="Enter Username:" />
+            <ui:TextField name="UsernameField" />
+            <ui:Button text="Submit" name="SubmitUsername" />
+            <ui:Button text="Close" name="CloseDialog" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

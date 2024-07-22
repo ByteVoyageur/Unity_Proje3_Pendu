@@ -47,5 +47,23 @@
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
     height: 9%;
     -unity-font-style: bold;
-    font-size: 80%;
+    font-size: 116%;
+}
+
+.login-dialog {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 300px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 0, 0);
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-text-align: upper-center;
+    transform: ;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
 }

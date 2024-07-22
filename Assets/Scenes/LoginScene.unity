@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 1517800592}
   - component: {fileID: 1517800594}
   - component: {fileID: 1517800595}
+  - component: {fileID: 1517800596}
   m_Layer: 5
   m_Name: LoginPage
   m_TagString: Untagged
@@ -313,6 +314,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa5cfb741f3fd824bb5ec167bed365ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1517800596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517800591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f33a7d11ffddd342951c3dd822ebcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2049554794
