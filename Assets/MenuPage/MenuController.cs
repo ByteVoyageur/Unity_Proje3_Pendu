@@ -7,9 +7,11 @@ public class MenuController : MonoBehaviour
 {
     public GameObject gameMenu;
     public GameObject gameStart;
+    public GameObject gameSettings;
     private Button startButton;
     private SoundManager soundManager;
     private Button logOutButton;
+    private Button settings;
 
     void OnEnable()
     {
@@ -20,6 +22,7 @@ public class MenuController : MonoBehaviour
 
         logOutButton = root.Q<Button>("LogOut");
         startButton = root.Q<Button>("Start");
+        settings = root.Q<Button>("Settings");
 
         if (startButton != null)
         {
@@ -31,6 +34,15 @@ public class MenuController : MonoBehaviour
         }
 
         logOutButton.clicked += OnLoginOutButtonClicked;
+
+        if (settings != null)
+        { 
+            settings.clicked += OnSettingsClicked;
+        }
+        else 
+        {
+            Debug.LogError ("No Button with name 'Settings' found ~");
+        }
     }
 
     public void OnStartButtonClicked()
@@ -49,6 +61,14 @@ public class MenuController : MonoBehaviour
     public void OnLoginOutButtonClicked()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void OnSettingsClicked()
+    {
+        soundManager.PlayNormalClickSound();
+        gameMenu.SetActive(false);
+        gameSettings.SetActive(true);
+
     }
 
 }

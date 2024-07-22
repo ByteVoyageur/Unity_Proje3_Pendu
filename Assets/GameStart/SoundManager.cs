@@ -18,32 +18,35 @@ public class SoundManager : MonoBehaviour
     public void PlayWinSound()
     {
         victoirSource.Play();
-        // Debug.Log("Playing win sound");
-        // audioSource.clip = winSound;
-        // audioSource.Play();
     }
 
     public void PlayLoseSound()
     {
         lossSource.Play();
-        // Debug.Log("Playing lose sound");
-        // audioSource.clip = loseSound;
-        // audioSource.Play();
     }
 
-    public void PlayNormalClickSound ()
+    public void PlayNormalClickSound()
     {
         normalClickSound.Play();
     }
 
-    public void PlayErrorClickSound ()
+    public void PlayErrorClickSound()
     {
-        audioSource.clip= errorClickSound;
+        audioSource.clip = errorClickSound;
         audioSource.Play();
     }
 
     public void PlayGrowUpSound()
     {
         growupSource.Play();
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioSource.volume = volume;
+        normalClickSound.volume = volume;
+        victoirSource.volume = volume;
+        lossSource.volume = volume;
+        growupSource.volume = volume;
     }
 }

@@ -1,0 +1,28 @@
+.background {
+}
+
+.silde-one {
+    width: 57%;
+    position: absolute;
+    left: 26%;
+    display: flex;
+    top: 1%;
+}
+
+.return-to-menu {
+    border-color: transparent;
+    background-color: transparent;
+    width: 21%;
+    height: 14%;
+    position: absolute;
+    left: 37%;
+    top: 67%;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    -unity-font-style: bold;
+}
+
+.volume-value {
+    position: absolute;
+    left: 61%;
+    top: 36%;
+}
