@@ -1,4 +1,3 @@
-using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -12,6 +11,7 @@ public class MenuController : MonoBehaviour
     private SoundManager soundManager;
     private Button logOutButton;
     private Button settings;
+    private Label userNameLabel; 
 
     void OnEnable()
     {
@@ -23,6 +23,18 @@ public class MenuController : MonoBehaviour
         logOutButton = root.Q<Button>("LogOut");
         startButton = root.Q<Button>("Start");
         settings = root.Q<Button>("Settings");
+        userNameLabel = root.Q<Label>("UserName"); 
+
+        // Display the username in the UserName label
+        if (userNameLabel != null)
+        {
+            string username = PlayerPrefs.GetString("Username", "Guest");
+            userNameLabel.text = $"Welcome {username}";
+        }
+        else
+        {
+            Debug.LogError("No Label with name 'UserName' found!");
+        }
 
         if (startButton != null)
         {
@@ -41,7 +53,7 @@ public class MenuController : MonoBehaviour
         }
         else 
         {
-            Debug.LogError ("No Button with name 'Settings' found ~");
+            Debug.LogError ("No Button with name 'Settings' found !");
         }
     }
 
@@ -68,7 +80,5 @@ public class MenuController : MonoBehaviour
         soundManager.PlayNormalClickSound();
         gameMenu.SetActive(false);
         gameSettings.SetActive(true);
-
     }
-
 }

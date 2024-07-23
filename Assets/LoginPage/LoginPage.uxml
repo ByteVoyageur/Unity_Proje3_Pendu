@@ -8,12 +8,11 @@
             <ui:Button name="PLAY" text="Play as Guest" parse-escape-sequences="true" display-tooltip-when-elied="true" class="Play-direct" />
             <ui:Button text="Sign In to Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SignInWith" class="sign-in-with" />
         </ui:VisualElement>
-        <!-- add a modal for username -->
-        <ui:VisualElement name="LoginDialog" class="login-dialog" visible="false">
-            <ui:Label text="Enter Username:" />
-            <ui:TextField name="UsernameField" />
-            <ui:Button text="Submit" name="SubmitUsername" />
-            <ui:Button text="Close" name="CloseDialog" />
+        <ui:VisualElement name="LoginDialog" visible="false" class="login-dialog">
+            <ui:Label text="Enter Username:" style="position: absolute; top: 20%; font-size: 10px; -unity-font-style: bold;" />
+            <ui:TextField name="UsernameField" class="user-name-field" />
+            <ui:Button text="OK" name="SubmitUsername" class="submit-user-name" />
+            <ui:Button text="X" name="CloseDialog" class="close-dialog" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -1387,8 +1387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b951bec63fb4664ea24628c8c24d9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMenu: {fileID: 1710075801}
-  gameStart: {fileID: 1628887597}
+  menuPage: {fileID: 1710075801}
+  gameStartPage: {fileID: 1628887597}
+  settingsPage: {fileID: 297065320}
 --- !u!1 &1710075801
 GameObject:
   m_ObjectHideFlags: 0

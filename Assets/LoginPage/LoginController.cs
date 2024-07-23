@@ -10,7 +10,7 @@ public class LoginController : MonoBehaviour
     private VisualElement loginDialog;
     private TextField usernameField;
     private Button submitUsernameButton;
-    private Button closeDialogButton; // 关闭按钮
+    private Button closeDialogButton; 
 
     void OnEnable()
     {
@@ -22,7 +22,7 @@ public class LoginController : MonoBehaviour
         loginDialog = root.Q<VisualElement>("LoginDialog");
         usernameField = loginDialog.Q<TextField>("UsernameField");
         submitUsernameButton = loginDialog.Q<Button>("SubmitUsername");
-        closeDialogButton = loginDialog.Q<Button>("CloseDialog"); // 获取关闭按钮
+        closeDialogButton = loginDialog.Q<Button>("CloseDialog"); 
 
         if (signInWithButton != null)
         {
@@ -87,14 +87,36 @@ public class LoginController : MonoBehaviour
                 PlayerPrefs.SetString("Username", username);
                 PlayerPrefs.SetInt("IsLoggedIn", 1);
 
-                // Perform actions after a successful login
-                OnLoginSuccess();
+                // Update the display name after successful login
+                UpdateUserDisplayName(username);
+
             }, OnLoginFailure);
         }
         else
         {
             Debug.LogError("Username is empty. Please enter a valid username.");
         }
+    }
+
+    private void UpdateUserDisplayName(string username)
+    {
+        var updateRequest = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = username
+        };
+
+        PlayFabClientAPI.UpdateUserTitleDisplayName(updateRequest, 
+            result => 
+            { 
+                Debug.Log("User display name updated successfully.");
+                // Perform actions after a successful update
+                OnLoginSuccess();
+            }, 
+            error => 
+            { 
+                Debug.LogError("Error updating user display name: " + error.GenerateErrorReport());
+                // Handle the error, for example showing a message to the user
+            });
     }
 
     private void OnCloseDialogButtonClicked()

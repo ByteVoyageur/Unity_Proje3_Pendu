@@ -2,11 +2,10 @@
 }
 
 .silde-one {
-    width: 57%;
+    width: 157px;
     position: absolute;
-    left: 26%;
+    left: 15%;
     display: flex;
-    top: 1%;
 }
 
 .return-to-menu {

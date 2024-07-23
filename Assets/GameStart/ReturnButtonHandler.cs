@@ -5,8 +5,9 @@ using UnityEngine.UIElements;
 
 public class ReturnButtonHandler : MonoBehaviour
 {
-    public GameObject gameMenu;
-    public GameObject gameStart;
+    public GameObject menuPage;
+    public GameObject gameStartPage;
+    public GameObject settingsPage;
     private Button returnButton;
 
     void OnEnable()
@@ -25,7 +26,8 @@ public class ReturnButtonHandler : MonoBehaviour
 
     public void OnReturnClicked()
     {
-        gameMenu.SetActive(true);
-        gameStart.SetActive(false); 
+        menuPage.SetActive(true);
+        gameStartPage.SetActive(false);
+        settingsPage.SetActive(false); 
     }
 }
