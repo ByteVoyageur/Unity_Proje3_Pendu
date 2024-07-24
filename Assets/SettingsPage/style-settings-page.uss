@@ -1,13 +1,6 @@
 .background {
 }
 
-.silde-one {
-    width: 157px;
-    position: absolute;
-    left: 15%;
-    display: flex;
-}
-
 .return-to-menu {
     border-color: transparent;
     background-color: transparent;
@@ -24,4 +17,24 @@
     position: absolute;
     left: 61%;
     top: 36%;
+}
+
+.slide-one {
+    width: 400px;
+    left: auto;
+    top: 36%;
+    position: absolute;
+    right: 51%;
+}
+
+.unity-base-slider__dragger {
+    width: 7%;
+}
+
+.unity-base-slider__tracker {
+    width: 100%;
+    min-width: 0;
+}
+
+.unity-base-slider__dragger-border {
 }
