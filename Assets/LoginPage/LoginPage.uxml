@@ -5,14 +5,14 @@
             <ui:Label tabindex="-1" text="HANGMAN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleHangman" class="title-hangman" />
         </ui:VisualElement>
         <ui:VisualElement name="ButtonsContainer" class="buttons-container" style="flex-grow: 1;">
-            <ui:Button name="PLAY" text="Play as Guest" parse-escape-sequences="true" display-tooltip-when-elied="true" class="Play-direct" />
-            <ui:Button text="Sign In to Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SignInWith" class="sign-in-with" />
+            <ui:Button name="PLAY" text="PLAY" parse-escape-sequences="true" display-tooltip-when-elied="true" class="Play-direct" />
+            <ui:Button text="Play with username" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SignInWith" class="sign-in-with" />
         </ui:VisualElement>
         <ui:VisualElement name="LoginDialog" visible="false" class="login-dialog">
-            <ui:Label text="Enter Username:" style="position: absolute; top: 20%; font-size: 10px; -unity-font-style: bold;" />
+            <ui:Label text="Enter Username:" style="position: absolute; top: 20%; font-size: 30px; -unity-font-style: bold;" />
             <ui:TextField name="UsernameField" class="user-name-field" />
             <ui:Button text="OK" name="SubmitUsername" class="submit-user-name" />
-            <ui:Button text="X" name="CloseDialog" class="close-dialog" />
+            <ui:Button text="X" name="CloseDialog" class="close-dialog" style="font-size:20px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

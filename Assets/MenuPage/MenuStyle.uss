@@ -19,15 +19,15 @@
 .user-name {
     position: absolute;
     width: 24%;
-    font-size: 25px;
+    font-size: 37px;
     height: 18%;
-    left: 12%;
+    left: 24%;
     top: 11%;
 }
 
 .titre {
     -unity-font-style: bold;
-    font-size: 30px;
+    font-size: 97px;
     width: 7%;
     top: 49%;
     position: absolute;
@@ -44,7 +44,7 @@
     border-color: transparent;
     background-color: transparent;
     -unity-font-style: bold;
-    font-size: 8px;
+    font-size: 51px;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
     width: 38%;
     height: 12%;
@@ -61,7 +61,7 @@
     background-color: transparent;
     width: 38%;
     height: 12%;
-    font-size: 8px;
+    font-size: 45px;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
     -unity-font-style: bold;
     top: 41%;
@@ -74,7 +74,7 @@
     background-color: transparent;
     width: 38%;
     height: 12%;
-    font-size: 8px;
+    font-size: 48px;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
     -unity-font-style: bold;
     top: 64%;

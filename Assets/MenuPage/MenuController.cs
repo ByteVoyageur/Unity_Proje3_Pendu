@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class MenuController : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class MenuController : MonoBehaviour
     private SoundManager soundManager;
     private Button logOutButton;
     private Button settings;
-    private Label userNameLabel; 
+    private Label userNameLabel;
 
     void OnEnable()
     {
@@ -23,38 +25,36 @@ public class MenuController : MonoBehaviour
         logOutButton = root.Q<Button>("LogOut");
         startButton = root.Q<Button>("Start");
         settings = root.Q<Button>("Settings");
-        userNameLabel = root.Q<Label>("UserName"); 
+        userNameLabel = root.Q<Label>("UserName");
 
-        // Display the username in the UserName label
-        if (userNameLabel != null)
+        // Ensure successful login before retrieving the username
+        if (LoginManager.instance.IsLoggedIn())
         {
-            string username = PlayerPrefs.GetString("Username", "Guest");
-            userNameLabel.text = $"Welcome {username}";
+            GetAndDisplayUsername();
         }
         else
         {
-            Debug.LogError("No Label with name 'UserName' found!");
+            Debug.LogError("User not logged in. Cannot retrieve account info.");
+            // Optionally, redirect to login scene
+            SceneManager.LoadScene(0);
         }
 
-        if (startButton != null)
-        {
-            startButton.clicked += OnStartButtonClicked;
-        }
-        else
-        {
-            Debug.LogError("No Button with name 'Start' found!");
-        }
+        startButton.clicked += OnStartButtonClicked;
+        logOutButton.clicked += OnLogOutButtonClicked;
+        settings.clicked += OnSettingsClicked;
+    }
 
-        logOutButton.clicked += OnLoginOutButtonClicked;
-
-        if (settings != null)
-        { 
-            settings.clicked += OnSettingsClicked;
-        }
-        else 
-        {
-            Debug.LogError ("No Button with name 'Settings' found !");
-        }
+    private void GetAndDisplayUsername()
+    {
+        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(),
+            result => {
+                string displayName = result.AccountInfo.TitleInfo.DisplayName;
+                userNameLabel.text = $"Welcome {displayName}";
+            },
+            error => {
+                Debug.LogError("Error retrieving account info: " + error.GenerateErrorReport());
+                userNameLabel.text = "Welcome"; // Display a default message if unable to get the username
+            });
     }
 
     public void OnStartButtonClicked()
@@ -70,8 +70,9 @@ public class MenuController : MonoBehaviour
         gameStart.SetActive(false);
     }
 
-    public void OnLoginOutButtonClicked()
+    public void OnLogOutButtonClicked()
     {
+        LoginManager.instance.Logout();
         SceneManager.LoadScene(0);
     }
 

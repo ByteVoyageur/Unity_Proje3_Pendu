@@ -61,33 +61,12 @@ public class WordMatcher : MonoBehaviour
                 matchedLetters[i] = true;
                 matched = true;
 
-                // Create a temporary label to animate
-                var tempLabel = new Label { text = currentWord[i].ToString() };
-                tempLabel.style.position = Position.Absolute;
-                tempLabel.style.fontSize = 72;
-                tempLabel.style.color = new StyleColor(new Color(0.133f, 0.545f, 0.133f));
+                // Get the target label position
+                float labelX = wordLabel.worldBound.xMin + i * 20; // Adjust according to the label position
+                float labelY = wordLabel.worldBound.yMin;
 
-                var centerX = (Screen.width - tempLabel.worldBound.width) / 2;
-                var centerY = (Screen.height - tempLabel.worldBound.height) / 3;
-                tempLabel.style.left = centerX;
-                tempLabel.style.top = centerY;
-
-                wordLabel.parent.Add(tempLabel);
-
-                float finalXPosition = wordLabel.worldBound.xMin + i * 20; // Calculate final position
-                float finalYPosition = wordLabel.worldBound.yMin;
-
-                // Animation sequence with increased duration
-                Sequence animationSequence = DOTween.Sequence();
-                animationSequence.Append(DOTween.To(() => 1f, x => tempLabel.style.scale = new Scale(new Vector3(x, x, 1)), 1f, 2f)); // Increased scale up duration to 2 seconds
-                animationSequence.Append(DOTween.To(() => 1f, x => 
-                {
-                    tempLabel.style.scale = new Scale(new Vector3(x, x, 1));
-                    tempLabel.style.left = finalXPosition - tempLabel.worldBound.width * (1 - x) / 2;
-                    tempLabel.style.top = finalYPosition - tempLabel.worldBound.height * (1 - x) / 2;
-                }, 0.1f, 2f)); // Increased scale down duration to 2 seconds
-                animationSequence.Append(tempLabel.DOFade(0, 1f)); // Increased fade out duration to 1 second
-                animationSequence.OnComplete(() => tempLabel.RemoveFromHierarchy());
+                // Play animation and update label
+                LetterAnimation.UpdateLabelWithAnimation(wordLabel.parent, currentWord[i].ToString(), new Color(0.133f, 0.545f, 0.133f), labelX, labelY);
             }
         }
 

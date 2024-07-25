@@ -26,6 +26,7 @@
     position: absolute;
     left: 1%;
     top: 10%;
+    font-size: 32px;
 }
 
 .hint-category {
@@ -33,11 +34,12 @@
     width: 10%;
     position: absolute;
     left: 13%;
-    top: 9%;
+    top: 13%;
+    font-size: 26px;
 }
 
 .word-label {
-    font-size: 246%;
+    font-size: 105px;
     position: absolute;
     left: 13%;
     top: 101%;
@@ -52,6 +54,7 @@
     position: absolute;
     left: 60%;
     top: 247%;
+    font-size: 33px;
 }
 
 .failed-label {
@@ -59,6 +62,7 @@
     width: 5%;
     left: 60%;
     top: 247%;
+    font-size: 33px;
 }
 
 .animation-container {
@@ -271,16 +275,18 @@
     align-self: center;
     position: absolute;
     left: 50%;
-    top: 58%;
+    top: 77%;
     -unity-font-style: normal;
     width: 5%;
-    font-size: 74%;
+    font-size: 22px;
 }
 
 .score-win {
+    font-size: 23px;
 }
 
 .score-failed {
+    font-size: 23px;
 }
 
 .key-board {
@@ -310,7 +316,7 @@
     width: 7%;
     height: 27%;
     -unity-font-style: bold;
-    font-size: 21px;
+    font-size: 70px;
     margin: 5px;
     padding: 10px;
     flex-direction: row;
@@ -329,7 +335,6 @@
 
 .used-button {
     color: transparent;
-    font-size: 4%;
 }
 
 .next-button-class {
@@ -341,6 +346,7 @@
     width: 18%;
     height: 25%;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-304149937&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_48");
+    font-size: 70px;
 }
 
 .return-button-class {
@@ -352,4 +358,5 @@
     width: 18%;
     height: 25%;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-304149937&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_48");
+    font-size: 70px;
 }

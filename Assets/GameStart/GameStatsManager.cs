@@ -17,20 +17,22 @@ public class GameStatsManager : MonoBehaviour
         scoreWinLabel = root.Q<Label>("ScoreWin");
         scoreFailedLabel = root.Q<Label>("ScoreFailed");
 
-        // Update the labels with the initial scores
-        UpdateScoreLabels();
+        // Load the scores from PlayFab
+        LoginManager.instance.LoadUserStats(OnStatsLoaded);
     }
 
     public void IncrementWinCount()
     {
         winCount++;
         UpdateScoreLabels();
+        SaveStats();
     }
 
     public void IncrementLoseCount()
     {
         loseCount++;
         UpdateScoreLabels();
+        SaveStats();
     }
 
     private void UpdateScoreLabels()
@@ -44,5 +46,17 @@ public class GameStatsManager : MonoBehaviour
         {
             scoreFailedLabel.text = $"Losses: {loseCount}";
         }
+    }
+
+    private void OnStatsLoaded(int loadedWinCount, int loadedLoseCount)
+    {
+        winCount = loadedWinCount;
+        loseCount = loadedLoseCount;
+        UpdateScoreLabels();
+    }
+
+    private void SaveStats()
+    {
+        LoginManager.instance.SaveUserStats(winCount, loseCount);
     }
 }
