@@ -18,7 +18,6 @@ public class GameStatsManager : MonoBehaviour
         scoreFailedLabel = root.Q<Label>("ScoreFailed");
 
         // Load the scores from PlayFab
-        LoginManager.instance.LoadUserStats(OnStatsLoaded);
     }
 
     public void IncrementWinCount()
@@ -57,6 +56,5 @@ public class GameStatsManager : MonoBehaviour
 
     private void SaveStats()
     {
-        LoginManager.instance.SaveUserStats(winCount, loseCount);
     }
 }

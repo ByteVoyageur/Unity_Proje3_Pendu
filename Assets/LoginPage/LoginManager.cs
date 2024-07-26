@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using System.ComponentModel;
 
 public class LoginManager : MonoBehaviour
 {
     public static LoginManager instance;
+    private bool isDirectLogin = false; 
     private string username;
-    private bool loggedIn = false; // Add this flag to indicate the login status
+    public int winCount = 0;
+    public int loseCount = 0;
 
     void Awake()
     {
@@ -16,24 +19,26 @@ public class LoginManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("LoginManager instance set and DontDestroyOnLoad called.");
         }
         else
         {
             Destroy(gameObject);
+            Debug.Log("Duplicate LoginManager instance destroyed.");
         }
     }
 
-    public void LoginWithCustomID(string customID, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
+    public void LoginWithHardwareID(string hardwareID, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
+        isDirectLogin = true; 
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = customID,
+            CustomId = hardwareID,
             CreateAccount = true
         };
         PlayFabClientAPI.LoginWithCustomID(request,
             result => {
                 Debug.Log("Login successful!");
-                loggedIn = true; // Update the flag on successful login
                 onSuccess?.Invoke();
             },
             error => {
@@ -43,20 +48,54 @@ public class LoginManager : MonoBehaviour
         );
     }
 
-    public bool IsLoggedIn()
+        public void LoginWithCustomID(string customID, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
-        return loggedIn;
+        isDirectLogin = false; 
+        var request = new LoginWithCustomIDRequest
+        {
+            CustomId = customID,
+            CreateAccount = true
+        };
+        PlayFabClientAPI.LoginWithCustomID(request,
+            result => {
+                Debug.Log("Login successful!");
+                onSuccess?.Invoke();
+            },
+            error => {
+                Debug.LogError("Error logging in: " + error.GenerateErrorReport());
+                onError?.Invoke(error);
+            }
+        );
     }
 
-    public void UpdateUsername(string newUsername)
+    public void UpdateDisplayName(string newDisplayName, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
-        username = newUsername;
-        var updateRequest = new UpdateUserTitleDisplayNameRequest { DisplayName = newUsername };
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = newDisplayName
+        };
 
-        PlayFabClientAPI.UpdateUserTitleDisplayName(updateRequest,
-            result => Debug.Log("User display name updated successfully."),
-            error => Debug.LogError("Error updating user display name: " + error.GenerateErrorReport())
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request,
+            result => {
+                Debug.Log("Display name updated successfully!");
+                username = newDisplayName;
+                onSuccess?.Invoke();
+            },
+            error => {
+                Debug.LogError("Error updating display name: " + error.GenerateErrorReport());
+                onError?.Invoke(error);
+            }
         );
+    }
+
+    public bool IsDirectLogin()
+    {
+        return isDirectLogin;
+    }
+
+    public void SetUsername(string username)
+    {
+        this.username = username;
     }
 
     public string GetUsername()
@@ -64,7 +103,7 @@ public class LoginManager : MonoBehaviour
         return username;
     }
 
-    public void SaveUserStats(int winCount, int loseCount)
+        public void SaveUserStats(int winCount, int loseCount, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
         var request = new UpdateUserDataRequest
         {
@@ -76,30 +115,41 @@ public class LoginManager : MonoBehaviour
         };
 
         PlayFabClientAPI.UpdateUserData(request,
-            result => Debug.Log("User stats updated successfully."),
-            error => Debug.LogError("Error updating user stats: " + error.GenerateErrorReport())
+            result => {
+                Debug.Log("User stats updated successfully.");
+                onSuccess?.Invoke();
+            },
+            error => {
+                Debug.LogError("Error updating user stats: " + error.GenerateErrorReport());
+                onError?.Invoke(error);
+            }
         );
     }
 
-    public void LoadUserStats(System.Action<int, int> onStatsLoaded = null)
+    public void LoadUserStats(System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
-        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), 
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
             result => {
                 Debug.Log("Received user data!");
-                int winCount = result.Data.ContainsKey("WinCount") ? int.Parse(result.Data["WinCount"].Value) : 0;
-                int loseCount = result.Data.ContainsKey("LoseCount") ? int.Parse(result.Data["LoseCount"].Value) : 0;
 
-                onStatsLoaded?.Invoke(winCount, loseCount);
+                if (result.Data != null && result.Data.ContainsKey("WinCount"))
+                {
+                    winCount = int.Parse(result.Data["WinCount"].Value);
+                }
+
+                if (result.Data != null && result.Data.ContainsKey("LoseCount"))
+                {
+                    loseCount = int.Parse(result.Data["LoseCount"].Value);
+                }
+
+                onSuccess?.Invoke();
             },
-            error => Debug.LogError("Error retrieving user data: " + error.GenerateErrorReport())
+            error => {
+                Debug.LogError("Error retrieving user data: " + error.GenerateErrorReport());
+                onError?.Invoke(error);
+            }
         );
     }
+}
 
-    public void Logout()
-    {
-        loggedIn = false;
-        username = null;
-        // Perform additional logout actions if necessary
-        Debug.Log("Logged out successfully.");
-    }
 }

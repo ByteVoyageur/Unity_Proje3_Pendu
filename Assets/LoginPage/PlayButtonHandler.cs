@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Add this for scene management
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using PlayFab;
-using PlayFab.ClientModels;
-using System.Collections.Generic;
 
 public class PlayButtonHandler : MonoBehaviour
 {
@@ -21,14 +18,12 @@ public class PlayButtonHandler : MonoBehaviour
     {
         Debug.Log("Play button clicked! Performing login...");
 
-        // Get the device unique identifier for authentication
         string hardwareId = SystemInfo.deviceUniqueIdentifier;
 
-        // Use the hardware ID to login via PlayFab's LoginWithCustomID method
-        LoginManager.instance.LoginWithCustomID(hardwareId, 
+        LoginManager.instance.LoginWithHardwareID(hardwareId, 
         () => {
             Debug.Log("Login with hardwareID successfully.");
-            SceneManager.LoadScene(1); // Load the next scene after a successful login
+            SceneManager.LoadScene(1); 
         },
         error => Debug.LogError("Error logging in: " + error.GenerateErrorReport()));
     }

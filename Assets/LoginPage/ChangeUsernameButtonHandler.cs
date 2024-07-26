@@ -73,9 +73,7 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Login successful!");
-        // Now, we can update the username
-        LoginManager.instance.UpdateUsername(username);
-        // Switch to the new scene after successful username update
+        LoginManager.instance.SetUsername(username);  
         SceneManager.LoadScene(1);
     }
 

@@ -27,16 +27,14 @@ public class MenuController : MonoBehaviour
         settings = root.Q<Button>("Settings");
         userNameLabel = root.Q<Label>("UserName");
 
-        // Ensure successful login before retrieving the username
-        if (LoginManager.instance.IsLoggedIn())
+        if (LoginManager.instance.IsDirectLogin())
         {
-            GetAndDisplayUsername();
+            userNameLabel.text = "Welcome";
         }
         else
         {
-            Debug.LogError("User not logged in. Cannot retrieve account info.");
-            // Optionally, redirect to login scene
-            SceneManager.LoadScene(0);
+            string username = LoginManager.instance.GetUsername();
+            userNameLabel.text = $"Welcome {username}";
         }
 
         startButton.clicked += OnStartButtonClicked;
@@ -44,17 +42,11 @@ public class MenuController : MonoBehaviour
         settings.clicked += OnSettingsClicked;
     }
 
-    private void GetAndDisplayUsername()
+    public void OnDisable()
     {
-        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(),
-            result => {
-                string displayName = result.AccountInfo.TitleInfo.DisplayName;
-                userNameLabel.text = $"Welcome {displayName}";
-            },
-            error => {
-                Debug.LogError("Error retrieving account info: " + error.GenerateErrorReport());
-                userNameLabel.text = "Welcome"; // Display a default message if unable to get the username
-            });
+        startButton.clicked -= OnStartButtonClicked;
+        logOutButton.clicked -= OnLogOutButtonClicked;
+        settings.clicked -= OnSettingsClicked;
     }
 
     public void OnStartButtonClicked()
@@ -72,7 +64,6 @@ public class MenuController : MonoBehaviour
 
     public void OnLogOutButtonClicked()
     {
-        LoginManager.instance.Logout();
         SceneManager.LoadScene(0);
     }
 
