@@ -60,13 +60,6 @@ public class WordMatcher : MonoBehaviour
             {
                 matchedLetters[i] = true;
                 matched = true;
-
-                // Get the target label position
-                float labelX = wordLabel.worldBound.xMin + i * 20; // Adjust according to the label position
-                float labelY = wordLabel.worldBound.yMin;
-
-                // Play animation and update label
-                LetterAnimation.UpdateLabelWithAnimation(wordLabel.parent, currentWord[i].ToString(), new Color(0.133f, 0.545f, 0.133f), labelX, labelY);
             }
         }
 
