@@ -75,7 +75,7 @@ public class KeyboardGenerator : MonoBehaviour
         // Play the appropriate sound based on whether the input letter matches
         if (isMatched)
         {
-            soundManager.PlayNormalClickSound();
+            soundManager.PlaySoundBingo();
         }
         else
         {

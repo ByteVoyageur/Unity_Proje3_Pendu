@@ -85,6 +85,7 @@
     width: 47%;
     position: absolute;
     height: 15%;
+    font-size: 22px;
 }
 
 .submit-user-name {
@@ -96,6 +97,7 @@
     width: 31%;
     background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-304149937&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_48");
     height: 15%;
+    font-size: 31px;
 }
 
 .close-dialog {

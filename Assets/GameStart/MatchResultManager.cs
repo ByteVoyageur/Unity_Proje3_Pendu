@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -46,7 +47,7 @@ public class MatchResultManager : MonoBehaviour
         wordMatcher.OnNewWordInitialized -= ResetAttemptsAndResults;
     }
 
-    private void HandleWordMatched(bool allMatched)
+    private async void HandleWordMatched(bool allMatched)
     {
         if (allMatched)
         {
@@ -55,6 +56,7 @@ public class MatchResultManager : MonoBehaviour
             gameStatsManager.IncrementWinCount();
             keyboardStatusManager.DisableKeyboard();
             EnableNextButton();
+            await Task.Delay(600);
             soundManager.PlayWinSound();
         }
     }

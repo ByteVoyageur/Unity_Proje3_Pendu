@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource victoirSource;
     public AudioSource lossSource;
     public AudioSource growupSource;
+    public AudioSource soundBingo;
 
     private AudioSource audioSource;
 
@@ -39,6 +40,11 @@ public class SoundManager : MonoBehaviour
     public void PlayGrowUpSound()
     {
         growupSource.Play();
+    }
+
+    public void PlaySoundBingo ()
+    {
+        soundBingo.Play();
     }
 
     public void SetVolume(float volume)
