@@ -38,7 +38,7 @@ public class LoginManager : MonoBehaviour
         };
         PlayFabClientAPI.LoginWithCustomID(request,
             result => {
-                Debug.Log("Login successful!");
+                Debug.Log("Login with hardwareID successful!");
                 onSuccess?.Invoke();
             },
             error => {
@@ -58,7 +58,7 @@ public class LoginManager : MonoBehaviour
         };
         PlayFabClientAPI.LoginWithCustomID(request,
             result => {
-                Debug.Log("Login successful!");
+                Debug.Log("Login with username successful!");
                 onSuccess?.Invoke();
             },
             error => {

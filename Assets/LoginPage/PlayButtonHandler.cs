@@ -16,8 +16,6 @@ public class PlayButtonHandler : MonoBehaviour
 
     private void OnPlayButtonClicked()
     {
-        Debug.Log("Play button clicked! Performing login...");
-
         string hardwareId = SystemInfo.deviceUniqueIdentifier;
 
         LoginManager.instance.LoginWithHardwareID(hardwareId, 

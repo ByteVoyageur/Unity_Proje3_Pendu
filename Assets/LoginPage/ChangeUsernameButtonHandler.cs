@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 using PlayFab;
 using PlayFab.ClientModels;
-using UnityEngine.SceneManagement;
 
 public class ChangeUsernameButtonHandler : MonoBehaviour
 {
@@ -46,7 +46,9 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
         if (!string.IsNullOrEmpty(username))
         {
             loginDialog.style.display = DisplayStyle.None;
-            LoginWithCustomID(username);
+            LoginManager.instance.LoginWithCustomID(username);
+            LoginManager.instance.SetUsername(username);
+            SceneManager.LoadScene(1);
         }
         else
         {
@@ -57,28 +59,5 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
     private void OnCloseDialogButtonClicked()
     {
         loginDialog.style.display = DisplayStyle.None;
-    }
-
-    private void LoginWithCustomID(string customID)
-    {
-        var request = new LoginWithCustomIDRequest
-        {
-            CustomId = customID,
-            CreateAccount = true // Create account if it doesn't exist
-        };
-
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
-    }
-
-    private void OnLoginSuccess(LoginResult result)
-    {
-        Debug.Log("Login successful!");
-        LoginManager.instance.SetUsername(username);  
-        SceneManager.LoadScene(1);
-    }
-
-    private void OnLoginFailure(PlayFabError error)
-    {
-        Debug.LogError("Error logging in: " + error.GenerateErrorReport());
     }
 }
