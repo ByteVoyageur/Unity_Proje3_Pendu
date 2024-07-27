@@ -78,23 +78,30 @@ public class WordMatcher : MonoBehaviour
 
     public void UpdateWordLabel(bool showAllLetters = false)
     {
-        string richText = "";
+        wordLabel.Clear();  
         for (int i = 0; i < currentWord.Length; i++)
         {
+            var letterElement = new Label(currentWord[i].ToString());
+            
             if (matchedLetters[i])
             {
-                richText += $"<color=#228B22>{currentWord[i]}</color>"; // deep green
+                letterElement.AddToClassList("matched-letter");
+                letterElement.style.color = new Color(0.13f, 0.55f, 0.13f); 
             }
             else if (showAllLetters)
             {
-                richText += $"<color=#FF0000>{currentWord[i]}</color>";
+                letterElement.style.color = new Color(1.0f, 0.0f, 0.0f);
             }
             else
             {
-                richText += "_";
+                letterElement.text = " "; 
             }
+
+            wordLabel.Add(letterElement); 
         }
-        wordLabel.text = richText;
+
+        // 在所有子元素正确创建后，应用动画
+        AnimationHelper.ApplyMatchedLetterAnimations(wordLabel, this);
     }
 
     private void HandleButtonUsed(Button button)
