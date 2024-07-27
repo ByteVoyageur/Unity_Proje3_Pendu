@@ -25,7 +25,6 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
         signInWithButton.clicked += OnSignInWithButtonClicked;
         submitUsernameButton.clicked += OnSubmitUsernameClicked;
         closeDialogButton.clicked += OnCloseDialogButtonClicked;
-        loginDialog.style.display = DisplayStyle.None;
     }
 
     private void OnDisable()
@@ -37,7 +36,7 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
 
     private void OnSignInWithButtonClicked()
     {
-        loginDialog.style.display = DisplayStyle.Flex;
+        loginDialog.AddToClassList("login-dialog--down");
     }
 
     private void OnSubmitUsernameClicked()

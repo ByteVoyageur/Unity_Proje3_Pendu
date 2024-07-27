@@ -83,6 +83,7 @@
 }
 
 .login-dialog {
+    display: none;
     background-color: transparent;
     border-color: transparent;
     position: absolute;
@@ -91,7 +92,7 @@
     width: 38%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0);
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -109,6 +110,16 @@
     -unity-slice-bottom: 16;
     -unity-slice-scale: 0.9px;
     border-bottom-right-radius: 4px;
+    translate: 0 -194%;
+    transition-duration: 1.5s;
+    transition-timing-function: ease-out-bounce;
+    opacity: 1;
+}
+
+.login-dialog--down {
+    display: flex;
+    translate: 0 -26%;
+    opacity: 1;
 }
 
 .user-name-field {
