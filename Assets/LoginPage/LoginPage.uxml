@@ -8,7 +8,7 @@
             <ui:Button name="PLAY" text="PLAY" parse-escape-sequences="true" display-tooltip-when-elied="true" class="Play-direct" />
             <ui:Button text="Play with username" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SignInWith" class="sign-in-with" />
         </ui:VisualElement>
-        <ui:VisualElement name="LoginDialog" visible="false" class="login-dialog login-dialog--down">
+        <ui:VisualElement name="LoginDialog" visible="false" class="login-dialog">
             <ui:Label text="Enter Username:" style="position: absolute; top: 20%; font-size: 30px; -unity-font-style: bold;" />
             <ui:TextField name="UsernameField" class="user-name-field" />
             <ui:Button text="OK" name="SubmitUsername" class="submit-user-name" />
