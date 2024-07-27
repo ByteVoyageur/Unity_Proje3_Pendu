@@ -39,6 +39,21 @@
     font-size: 25px;
 }
 
+.Play-direct:hover {
+    border-color: transparent;
+    background-color: transparent;
+    position: absolute;
+    top: 30%;
+    left: 24%;
+    width: 50%;
+    height: 9%;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    -unity-font-style: bold;
+    font-size: 25px;
+    scale: 1.1 1.1;
+    transition-duration: 0.5s;
+}
+
 .sign-in-with {
     border-color: transparent;
     background-color: transparent;
@@ -50,6 +65,21 @@
     height: 9%;
     -unity-font-style: bold;
     font-size: 25px;
+}
+
+.sign-in-with:hover {
+    border-color: transparent;
+    background-color: transparent;
+    width: 50%;
+    position: absolute;
+    left: 24%;
+    top: 49%;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    height: 9%;
+    -unity-font-style: bold;
+    font-size: 25px;
+    scale: 1.1 1.1;
+    transition-duration: 0.5s;
 }
 
 .login-dialog {

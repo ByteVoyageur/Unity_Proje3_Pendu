@@ -56,6 +56,24 @@
     right: 46%;
 }
 
+.start-button:hover {
+    border-color: transparent;
+    background-color: transparent;
+    -unity-font-style: bold;
+    font-size: 40px;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    width: 38%;
+    height: 12%;
+    align-self: center;
+    align-items: center;
+    -unity-text-align: middle-center;
+    top: 17%;
+    position: absolute;
+    right: 46%;
+    scale: 1.1 1.1;
+    transition-duration: 0.5s;
+}
+
 .log-out {
     border-color: transparent;
     background-color: transparent;
@@ -69,6 +87,21 @@
     right: 46%;
 }
 
+.log-out:hover {
+    border-color: transparent;
+    background-color: transparent;
+    width: 38%;
+    height: 12%;
+    font-size: 40px;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    -unity-font-style: bold;
+    top: 41%;
+    position: absolute;
+    right: 46%;
+    scale: 1.1 1.1;
+    transition-duration: 0.5s;
+}
+
 .settings {
     border-color: transparent;
     background-color: transparent;
@@ -80,4 +113,19 @@
     top: 64%;
     position: absolute;
     right: 46%;
+}
+
+.settings:hover {
+    border-color: transparent;
+    background-color: transparent;
+    width: 38%;
+    height: 12%;
+    font-size: 40px;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    -unity-font-style: bold;
+    top: 64%;
+    position: absolute;
+    right: 46%;
+    scale: 1.1 1.1;
+    transition-duration: 0.5s;
 }
