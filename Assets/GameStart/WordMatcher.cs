@@ -63,31 +63,27 @@ public class WordMatcher : MonoBehaviour
             }
         }
 
-        UpdateWordLabel();
-
-        bool allMatched = !Array.Exists(matchedLetters, matched => matched == false);
-        OnWordMatched?.Invoke(allMatched);
-
-        if (!matched)
+        if (matched)
         {
+            UpdateWordLabel();
+            AnimationHelper.ApplyMatchedLetterAnimations(wordLabel, this);
+        }
+        else
+        {
+            UpdateWordLabel();
             matchResultManager.UpdateFailedAttempts();
         }
 
-        // 只有匹配成功时才应用动画
-        if (matched)
-        {
-            AnimationHelper.ApplyMatchedLetterAnimations(wordLabel, this);
-        }
+        bool allMatched = !Array.Exists(matchedLetters, matched => matched == false);
+        OnWordMatched?.Invoke(allMatched);
 
         return matched;
     }
 
     public void UpdateWordLabel(bool showAllLetters = false)
     {
-        wordLabel.Clear();  // 清空现有的子元素
+        wordLabel.Clear();
 
-        // 设置 wordLabel 的布局为水平排列
-        wordLabel.style.flexDirection = FlexDirection.Row;
 
         for (int i = 0; i < currentWord.Length; i++)
         {
@@ -97,20 +93,19 @@ public class WordMatcher : MonoBehaviour
             {
                 letterElement.text = currentWord[i].ToString(); 
                 letterElement.AddToClassList("matched-letter");
-                letterElement.style.color = new Color(0.13f, 0.55f, 0.13f); // 深绿色
+                letterElement.style.color = new Color(0.13f, 0.55f, 0.13f); 
             }
             else if (showAllLetters)
             {
                 letterElement.text = currentWord[i].ToString(); 
-                letterElement.style.color = new Color(1.0f, 0.0f, 0.0f); // 红色
+                letterElement.style.color = new Color(1.0f, 0.0f, 0.0f);
             }
             else
             {
-                // 仅在未匹配到且不展示所有字母时显示下划线
                 letterElement.text = "_"; 
             }
 
-            wordLabel.Add(letterElement); // 添加子元素到 wordLabel
+            wordLabel.Add(letterElement);
         }
     }
 
