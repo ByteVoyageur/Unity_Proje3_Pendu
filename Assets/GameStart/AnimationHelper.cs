@@ -6,13 +6,11 @@ public static class AnimationHelper
 {
     public static void ApplyMatchedLetterAnimations(Label wordLabel, MonoBehaviour monoBehaviour)
     {
-        Debug.Log("Applying matched letter animations...");
         
         foreach (var element in wordLabel.Children())
         {
             if (element.ClassListContains("matched-letter"))
             {
-                Debug.Log($"Animating element: {element.name}");
                 monoBehaviour.StartCoroutine(AnimateElement(element));
             }
         }
@@ -25,14 +23,12 @@ public static class AnimationHelper
         Vector3 originalScale = element.transform.scale;
         Vector3 targetScale = originalScale * 1.5f;
 
-        Debug.Log("Starting animation...");
 
         // Scaling up
         while (elapsedTime < duration)
         {
             float t = elapsedTime / duration;
             element.transform.scale = Vector3.Lerp(originalScale, targetScale, t);
-            Debug.Log($"Scaling up: {element.transform.scale}");
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -48,6 +44,5 @@ public static class AnimationHelper
         }
 
         element.transform.scale = originalScale; // Ensure it's reset
-        Debug.Log("Animation complete.");
     }
 }
