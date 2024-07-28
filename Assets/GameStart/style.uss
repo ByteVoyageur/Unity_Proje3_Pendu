@@ -45,7 +45,7 @@
     top: 101%;
     width: 15%;
     font-family: "Courier New", monospace;
-    letter-spacing: 29px;
+    letter-spacing: 60px;
     flex-direction: row;
 }
 
@@ -283,11 +283,13 @@
 }
 
 .score-win {
-    font-size: 23px;
+    font-size: 27px;
+    -unity-font-style: bold;
 }
 
 .score-failed {
-    font-size: 23px;
+    font-size: 27px;
+    -unity-font-style: bold;
 }
 
 .key-board {

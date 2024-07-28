@@ -111,7 +111,7 @@
     -unity-slice-scale: 0.9px;
     border-bottom-right-radius: 4px;
     translate: 0 -194%;
-    transition-duration: 1.5s;
+    transition-duration: 1.2s;
     transition-timing-function: ease-out-bounce;
     opacity: 1;
 }

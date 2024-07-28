@@ -38,7 +38,6 @@ public class LoginManager : MonoBehaviour
         };
         PlayFabClientAPI.LoginWithCustomID(request,
             result => {
-                Debug.Log("Login with hardwareID successful!");
                 onSuccess?.Invoke();
             },
             error => {
@@ -58,7 +57,6 @@ public class LoginManager : MonoBehaviour
         };
         PlayFabClientAPI.LoginWithCustomID(request,
             result => {
-                Debug.Log("Login with username successful!");
                 onSuccess?.Invoke();
             },
             error => {
@@ -77,7 +75,6 @@ public class LoginManager : MonoBehaviour
 
         PlayFabClientAPI.UpdateUserTitleDisplayName(request,
             result => {
-                Debug.Log("Display name updated successfully!");
                 username = newDisplayName;
                 onSuccess?.Invoke();
             },
@@ -130,7 +127,6 @@ public class LoginManager : MonoBehaviour
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
             result => {
-                Debug.Log("Received user data!");
 
                 if (result.Data != null && result.Data.ContainsKey("WinCount"))
                 {

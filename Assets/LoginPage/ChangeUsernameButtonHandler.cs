@@ -36,6 +36,7 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
 
     private void OnSignInWithButtonClicked()
     {
+        loginDialog.style.display = DisplayStyle.Flex;
         loginDialog.AddToClassList("login-dialog--down");
     }
 
@@ -57,6 +58,7 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
 
     private void OnCloseDialogButtonClicked()
     {
+        loginDialog.RemoveFromClassList("login-dialog--down");
         loginDialog.style.display = DisplayStyle.None;
     }
 }

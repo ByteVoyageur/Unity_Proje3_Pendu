@@ -20,7 +20,6 @@ public class PlayButtonHandler : MonoBehaviour
 
         LoginManager.instance.LoginWithHardwareID(hardwareId, 
         () => {
-            Debug.Log("Login with hardwareID successfully.");
             SceneManager.LoadScene(1); 
         },
         error => Debug.LogError("Error logging in: " + error.GenerateErrorReport()));
