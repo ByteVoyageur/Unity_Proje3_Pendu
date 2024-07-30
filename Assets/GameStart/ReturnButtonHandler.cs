@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+namespace Pendu.GameStart{
 public class ReturnButtonHandler : MonoBehaviour
 {
     public GameObject menuPage;
@@ -30,4 +31,5 @@ public class ReturnButtonHandler : MonoBehaviour
         gameStartPage.SetActive(false);
         settingsPage.SetActive(false); 
     }
+}
 }

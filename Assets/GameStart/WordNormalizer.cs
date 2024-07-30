@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text;
 
+namespace Pendu.GameStart{
 public static class WordNormalizer
 {
     public static string NormalizeString(string input)
@@ -19,4 +20,5 @@ public static class WordNormalizer
 
         return stringBuilder.ToString().Normalize(NormalizationForm.FormC).ToUpper(); 
     }
+}
 }

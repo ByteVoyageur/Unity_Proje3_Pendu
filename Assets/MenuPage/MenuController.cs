@@ -3,7 +3,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using PlayFab;
 using PlayFab.ClientModels;
+using Pendu.LoginPage;
+using Pendu.GameStart;
 
+namespace Pendu.MenuPage
+{
 public class MenuController : MonoBehaviour
 {
     public GameObject gameMenu;
@@ -73,4 +77,5 @@ public class MenuController : MonoBehaviour
         gameMenu.SetActive(false);
         gameSettings.SetActive(true);
     }
+}
 }

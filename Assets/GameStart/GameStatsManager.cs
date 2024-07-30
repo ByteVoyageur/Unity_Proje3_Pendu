@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using Pendu.LoginPage;
 
+namespace Pendu.GameStart{
 public class GameStatsManager : MonoBehaviour
 {
     private int winCount = 0;
@@ -64,4 +66,5 @@ public class GameStatsManager : MonoBehaviour
     {
         LoginManager.instance.SaveUserStats(winCount, loseCount);
     }
+}
 }

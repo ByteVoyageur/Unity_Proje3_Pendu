@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+namespace Pendu.LoginPage
+{
 public class PlayButtonHandler : MonoBehaviour
 {
     private Button playButton;
@@ -24,4 +26,5 @@ public class PlayButtonHandler : MonoBehaviour
         },
         error => Debug.LogError("Error logging in: " + error.GenerateErrorReport()));
     }
+}
 }

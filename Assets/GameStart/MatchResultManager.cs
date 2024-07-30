@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+namespace Pendu.GameStart{
 public class MatchResultManager : MonoBehaviour
 {
     private VisualElement resultContainer;
@@ -118,4 +119,5 @@ public class MatchResultManager : MonoBehaviour
             nextButton.SetEnabled(true);
         }
     }
+}
 }

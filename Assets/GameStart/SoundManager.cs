@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+namespace Pendu.GameStart{
 public class SoundManager : MonoBehaviour
 {
     public AudioClip errorClickSound;
@@ -55,4 +57,5 @@ public class SoundManager : MonoBehaviour
         lossSource.volume = volume;
         growupSource.volume = volume;
     }
+}
 }

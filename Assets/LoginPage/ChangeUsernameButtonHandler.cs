@@ -1,9 +1,12 @@
+
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using PlayFab;
 using PlayFab.ClientModels;
 
+namespace Pendu.LoginPage
+{
 public class ChangeUsernameButtonHandler : MonoBehaviour
 {
     private Button signInWithButton;
@@ -61,4 +64,5 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
         loginDialog.RemoveFromClassList("login-dialog--down");
         loginDialog.style.display = DisplayStyle.None;
     }
+}
 }

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+namespace Pendu.GameStart{
 public class KeyboardStatusManager : MonoBehaviour
 {
     private VisualElement keyboardContainer;
@@ -89,4 +90,5 @@ public class KeyboardStatusManager : MonoBehaviour
             }
         }
     }
+}
 }

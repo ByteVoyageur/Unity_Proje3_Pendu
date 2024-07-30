@@ -1,10 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using System.ComponentModel;
 
+namespace Pendu.LoginPage
+{
 public class LoginManager : MonoBehaviour
 {
     public static LoginManager instance;
@@ -147,4 +147,4 @@ public class LoginManager : MonoBehaviour
         );
     }
 }
-
+}

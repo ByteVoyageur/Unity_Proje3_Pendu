@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
+namespace Pendu.GameStart{
 public class WordGenerator : MonoBehaviour
 {
     public string apiUrl = "https://trouve-mot.fr/api/random"; // API URL
@@ -96,4 +97,5 @@ public class WordGenerator : MonoBehaviour
             public T[] array;
         }
     }
+}
 }

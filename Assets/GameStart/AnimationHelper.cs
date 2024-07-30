@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+namespace Pendu.GameStart{
 public static class AnimationHelper
 {
     public static void ApplyMatchedLetterAnimations(Label wordLabel, MonoBehaviour monoBehaviour)
@@ -45,4 +46,5 @@ public static class AnimationHelper
 
         element.transform.scale = originalScale; // Ensure it's reset
     }
+}
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
 
+namespace Pendu.GameStart{
 public class NextButtonHandler : MonoBehaviour
 {
     private WordGenerator wordGenerator;
@@ -62,4 +63,5 @@ public class NextButtonHandler : MonoBehaviour
         // Request a new word
         StartCoroutine(wordGenerator.GetRandomWordFromAPI());
     }
+}
 }

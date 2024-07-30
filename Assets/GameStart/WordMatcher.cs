@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using DG.Tweening;
 
+namespace Pendu.GameStart{
 public class WordMatcher : MonoBehaviour
 {
     private string currentWord;
@@ -113,4 +114,5 @@ public class WordMatcher : MonoBehaviour
     {
         button.SetEnabled(false);
     }
+}
 }

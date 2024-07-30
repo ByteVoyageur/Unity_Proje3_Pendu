@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
+namespace Pendu.GameStart{
 public class HangmanAnimator : MonoBehaviour
 {
     private VisualElement[] hangmanParts;
@@ -69,4 +70,5 @@ public class HangmanAnimator : MonoBehaviour
             }
         }
     }
+}
 }

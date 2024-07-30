@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+namespace Pendu.LoginPage
+{
 public class SceneController : MonoBehaviour
 {
     private VisualElement root;
@@ -27,7 +29,7 @@ public class SceneController : MonoBehaviour
         playButton.clicked += OnPlayButtonClicked;
     }
 
-    void OnPlayButtonClicked()
+    public void OnPlayButtonClicked()
     {
         if (PlayerPrefs.GetInt("IsLoggedIn") == 1)
         {
@@ -36,7 +38,7 @@ public class SceneController : MonoBehaviour
         else
         {
             Debug.LogError("User is not logged in!");
-            // Display a message to the user indicating they need to log in
         }
     }
+}
 }

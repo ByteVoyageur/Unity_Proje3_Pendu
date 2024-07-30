@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using Pendu.GameStart;
 
 public class VolumeSettings : MonoBehaviour
 {
-    public SoundManager soundManager; // 引用 SoundManager 脚本
+    public SoundManager soundManager; 
     private Slider volumeSlider;
     private Label volumeLabel;
 

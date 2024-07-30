@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using Pendu.MenuPage;
 
+namespace Pendu.GameStart{
 public class KeyboardGenerator : MonoBehaviour
 {
     private NextButtonHandler nextButtonHandler;
@@ -82,4 +84,5 @@ public class KeyboardGenerator : MonoBehaviour
             soundManager.PlayErrorClickSound();
         }
     }
+}
 }
