@@ -11,12 +11,6 @@ public class SceneController : MonoBehaviour
     void OnEnable()
     {
         var uiDocument = GetComponent<UIDocument>();
-        if (uiDocument == null)
-        {
-            Debug.LogError("UIDocument component is missing.");
-            return;
-        }
-
         root = uiDocument.rootVisualElement;
 
         var playButton = root.Q<Button>("PLAY");

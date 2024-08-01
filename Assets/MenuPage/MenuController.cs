@@ -31,15 +31,22 @@ public class MenuController : MonoBehaviour
         settings = root.Q<Button>("Settings");
         userNameLabel = root.Q<Label>("UserName");
 
-        if (LoginManager.instance.IsDirectLogin())
-        {
-            userNameLabel.text = "Welcome";
-        }
-        else
-        {
-            string username = LoginManager.instance.GetUsername();
-            userNameLabel.text = $"Welcome {username}";
-        }
+            if (LoginManager.instance != null)
+            {
+                if (LoginManager.instance.IsDirectLogin())
+                {
+                    userNameLabel.text = "Welcome";
+                }
+                else
+                {
+                    string username = LoginManager.instance.GetUsername();
+                    userNameLabel.text = $"Welcome {username}";
+                }
+            }
+            else
+            {
+                Debug.LogError("LoginManager instance is null in MenuController OnEnable");
+            }
 
         startButton.clicked += OnStartButtonClicked;
         logOutButton.clicked += OnLogOutButtonClicked;
