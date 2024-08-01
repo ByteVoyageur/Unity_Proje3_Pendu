@@ -1,0 +1,365 @@
+.game-start {
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/PNG/fond-hangman.jpg?fileID=21300000&guid=64e1dc3a9efe96b428d87054e07a031a&type=3#fond-hangman");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.zone-interaction {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.display-area {
+    flex-direction: row;
+    height: 50%;
+    flex-grow: 1;
+}
+
+.result-label {
+    align-items: center;
+    align-self: center;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    left: 1%;
+    top: 10%;
+    font-size: 32px;
+}
+
+.hint-category {
+    padding-bottom: 7px;
+    width: 10%;
+    position: absolute;
+    left: 13%;
+    top: 13%;
+    font-size: 26px;
+}
+
+.word-label {
+    font-size: 105px;
+    position: absolute;
+    left: 13%;
+    top: 101%;
+    width: 15%;
+    font-family: "Courier New", monospace;
+    letter-spacing: 60px;
+    flex-direction: row;
+}
+
+.success-label {
+    -unity-font-style: bold;
+    width: 5%;
+    position: absolute;
+    left: 60%;
+    top: 247%;
+    font-size: 33px;
+}
+
+.failed-label {
+    -unity-font-style: bold;
+    width: 5%;
+    left: 60%;
+    top: 247%;
+    font-size: 33px;
+}
+
+.animation-container {
+    position: absolute;
+    width: 28%;
+    height: 72%;
+    margin: 0 auto;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-1386721001&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_0");
+    top: 23%;
+    right: 0;
+    left: 60%;
+}
+
+.base {
+    position: absolute;
+    width: 0;
+    height: 8px;
+    background-color: black;
+    transition: width 1.5s ease-in-out;
+}
+
+.base-visible {
+    width: 60%;
+    position: absolute;
+    height: 6%;
+    bottom: 8%;
+    left: 18%;
+    background-color: black;
+}
+
+.vertical-pole {
+    position: absolute;
+    width: 6px;
+    height: 0;
+    bottom: 22px;
+    left: 99px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.verticalpole-visible {
+    height: 66%;
+    position: absolute;
+    width: 3%;
+    bottom: 14%;
+    left: 28%;
+    background-color: black;
+}
+
+.support {
+    position: absolute;
+    width: 0;
+    height: 5px;
+    bottom: 175px;
+    left: 100px;
+    background-color: black;
+    transition: width 1.5s ease-in-out;
+}
+
+.support-visible {
+    width: 30%;
+    position: absolute;
+    height: 3%;
+    bottom: 75%;
+    left: 30%;
+    background-color: black;
+}
+
+.rope {
+    position: absolute;
+    width: 5px;
+    height: 0;
+    top: 20px;
+    left: 165px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.rope-visible {
+    height: 20%;
+    position: absolute;
+    width: 1%;
+    top: 23%;
+    left: 53%;
+    background-color: black;
+}
+
+.head {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 58px;
+    left: 153px;
+    border-radius: 50%;
+    background-color: black;
+    transition: width 1.5s ease-in-out, height 1.5s ease-in-out;
+}
+
+.head-visible {
+    width: 6%;
+    height: 10%;
+    position: absolute;
+    top: 38%;
+    left: 50.5%;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.body {
+    position: absolute;
+    width: 5px;
+    height: 0;
+    top: 84px;
+    left: 165px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.body-visible {
+    height: 24%;
+    position: absolute;
+    width: 1.5%;
+    top: 43%;
+    left: 53%;
+    background-color: black;
+}
+
+.left-arm {
+    position: absolute;
+    width: 5px;
+    height: 0;
+    top: 93px;
+    left: 156px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.leftarm-visible {
+    height: 10%;
+    position: absolute;
+    width: 1%;
+    top: 51%;
+    left: 51%;
+    background-color: black;
+    rotate: 45deg;
+}
+
+.right-arm {
+    position: absolute;
+    width: 5px;
+    height: 0;
+    top: 93px;
+    left: 174px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.rightarm-visible {
+    height: 10%;
+    position: absolute;
+    width: 1%;
+    top: 51%;
+    left: 56%;
+    background-color: black;
+    rotate: -45deg;
+}
+
+.left-leg {
+    position: absolute;
+    width: 5px;
+    height: 0;
+    top: 126px;
+    left: 155px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.leftleg-visible {
+    height: 11%;
+    position: absolute;
+    width: 1%;
+    top: 65%;
+    left: 51%;
+    background-color: black;
+    rotate: 45deg;
+}
+
+.right-leg {
+    position: absolute;
+    width: 5px;
+    height: 0;
+    top: 126px;
+    left: 175px;
+    background-color: black;
+    transition: height 1.5s ease-in-out;
+}
+
+.rightleg-visible {
+    height: 11%;
+    position: absolute;
+    width: 1%;
+    top: 65%;
+    left: 56%;
+    background-color: black;
+    rotate: -45deg;
+}
+
+.score-container {
+    align-items: center;
+    align-self: center;
+    position: absolute;
+    left: 50%;
+    top: 77%;
+    -unity-font-style: normal;
+    width: 5%;
+    font-size: 22px;
+}
+
+.score-win {
+    font-size: 27px;
+    -unity-font-style: bold;
+}
+
+.score-failed {
+    font-size: 27px;
+    -unity-font-style: bold;
+}
+
+.key-board {
+    height: 50%;
+    align-self: center;
+}
+
+.keyboard-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 90%;
+    padding-top: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    align-items: center;
+    height: 90%;
+    position: relative;
+    left: 4%;
+}
+
+.keyboard-button {
+    background-color: transparent;
+    border-color: transparent;
+    width: 7%;
+    height: 27%;
+    -unity-font-style: bold;
+    font-size: 70px;
+    margin: 5px;
+    padding: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=2121966&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_47");
+    position: relative;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+    margin-bottom: 0.5%;
+    margin-left: 0.5%;
+}
+
+.used-button {
+    color: transparent;
+}
+
+.next-button-class {
+    background-color: transparent;
+    border-color: center;
+    width: 450px;
+    height: 150px;
+    color: white;
+    width: 18%;
+    height: 25%;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-304149937&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_48");
+    font-size: 70px;
+}
+
+.return-button-class {
+    background-color: transparent;
+    border-color: center;
+    width: 450px;
+    height: 150px;
+    color: white;
+    width: 18%;
+    height: 25%;
+    background-image: url("project://database/Assets/Assets_Kenny_pack/wood_button_without_background.png?fileID=-304149937&guid=8b6229feb0785564096c6b73b5c50128&type=3#wood_button_without_background_48");
+    font-size: 70px;
+}

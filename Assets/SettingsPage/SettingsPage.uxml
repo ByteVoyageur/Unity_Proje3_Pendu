@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/SettingsPage/style-settings-page.uss?fileID=7433441132597879392&amp;guid=4c7e884936eb30f47ae2fa4b5d8de57f&amp;type=3#style-settings-page" />
+    <ui:VisualElement name="Background" class="background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Assets_Kenny_pack/PNG/fond-hangman.jpg?fileID=21300000&amp;guid=64e1dc3a9efe96b428d87054e07a031a&amp;type=3#fond-hangman&quot;);">
+        <ui:Slider label="Volume" high-value="100" name="SlideOne" focusable="true" class="silde-one slide-one" style="left: auto;" />
+    </ui:VisualElement>
+    <ui:Button text="RETURN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ReturnToMenu" class="return-to-menu" />
+    <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="VolumeValue" class="volume-value" />
+</ui:UXML>

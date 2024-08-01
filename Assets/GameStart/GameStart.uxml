@@ -1,0 +1,36 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/style.uss?fileID=7433441132597879392&amp;guid=c3f0a43fb1dd86c4fbfc33f03ba6bc90&amp;type=3#style" />
+    <ui:VisualElement name="GameStart" class="game-start">
+        <ui:VisualElement name="ZoneInteraction" class="zone-interaction" style="flex-grow: 1;">
+            <ui:VisualElement name="DisplayArea" class="display-area" style="flex-grow: 1;">
+                <ui:VisualElement name="ResultLabel" class="result-label" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="Category" parse-escape-sequences="true" display-tooltip-when-elided="true" name="HintCategory" class="hint-category" />
+                    <ui:Label tabindex="-1" text="WORD" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WordLabel" class="word-label" />
+                    <ui:Label tabindex="-1" text="SUCCESS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SuccessLabel" class="success-label" />
+                    <ui:Label tabindex="-1" text="FAILED" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FailedLabel" class="failed-label" />
+                </ui:VisualElement>
+                <ui:VisualElement name="AnimationContainer" class="animation-container" style="flex-grow: 1;">
+                    <ui:VisualElement name="Base" class="base" />
+                    <ui:VisualElement name="VerticalPole" class="vertical-pole" />
+                    <ui:VisualElement name="Support" class="support" />
+                    <ui:VisualElement name="Rope" class="rope" />
+                    <ui:VisualElement name="Head" class="head" />
+                    <ui:VisualElement name="Body" class="body" />
+                    <ui:VisualElement name="LeftArm" class="left-arm" />
+                    <ui:VisualElement name="RightArm" class="right-arm" />
+                    <ui:VisualElement name="LeftLeg" class="left-leg" />
+                    <ui:VisualElement name="RightLeg" class="right-leg" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ScoreContainer" class="score-container" style="flex-grow: 1;">
+                    <ui:Label tabindex="-1" text="score win" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreWin" class="score-win" />
+                    <ui:Label tabindex="-1" text="score faild" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreFailed" class="score-failed" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Keyboard" class="key-board" style="flex-grow: 1;">
+                <ui:VisualElement name="KeyboardButtons" class="input-lettre keyboard-buttons" style="flex-grow: 1;">
+                    <ui:VisualElement name="KeyboardButton" style="flex-grow: 1; width: auto; height: auto;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
