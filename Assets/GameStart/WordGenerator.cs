@@ -1,3 +1,4 @@
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,6 +11,7 @@ public class WordGenerator : MonoBehaviour
     private WordMatcher wordMatcher;
     private Button nextButton;
 
+// Fetches a random word from an API, initializes the word and category to UI labels, and handles the onclick event for the Next button.
     void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;

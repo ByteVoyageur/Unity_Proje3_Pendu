@@ -16,6 +16,8 @@ public class PlayButtonHandler : MonoBehaviour
         playButton.clicked += OnPlayButtonClicked;
     }
 
+    // Play button click event, logs in the user with hardware ID, and loads a new scene upon success
+
     private void OnPlayButtonClicked()
     {
         string hardwareId = SystemInfo.deviceUniqueIdentifier;

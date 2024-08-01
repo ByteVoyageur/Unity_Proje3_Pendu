@@ -35,6 +35,7 @@ public class NextButtonHandler : MonoBehaviour
         }
     }
 
+// Event handler for when the "Next" button is clicked. It initializes a new game round.
     public void OnNextButtonClick()
     {
 

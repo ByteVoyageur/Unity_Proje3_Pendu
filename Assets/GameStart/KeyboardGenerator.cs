@@ -10,6 +10,7 @@ public class KeyboardGenerator : MonoBehaviour
     private WordMatcher wordMatcher;
     private SoundManager soundManager;
 
+ // Initializes the UI elements, creates keyboard buttons and sets up button click event listeners
     void OnEnable()
     {
         // Find the SoundManager
@@ -69,6 +70,7 @@ public class KeyboardGenerator : MonoBehaviour
         };
     }
 
+// Handles the click event for each letter button, matches the letter and plays the appropriate sound
     private void HandleButtonClick(Button button)
     {
         char inputLetter = button.text.ToUpper()[0];

@@ -2,8 +2,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using PlayFab;
-using PlayFab.ClientModels;
 
 namespace Pendu.LoginPage
 {
@@ -16,6 +14,7 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
     private Button closeDialogButton;
     private string username;
 
+// Initializes the UI elements and sets up button click event listeners
     void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
@@ -30,6 +29,7 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
         closeDialogButton.clicked += OnCloseDialogButtonClicked;
     }
 
+  // Cleans up event listeners when the object is disabled
     private void OnDisable()
     {
         signInWithButton.clicked -= OnSignInWithButtonClicked;
@@ -37,12 +37,14 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
         closeDialogButton.clicked -= OnCloseDialogButtonClicked;
     }
 
+// Displays the login dialog and adds animation class to it
     private void OnSignInWithButtonClicked()
     {
         loginDialog.style.display = DisplayStyle.Flex;
         loginDialog.AddToClassList("login-dialog--down");
     }
 
+// Handles the submit username button click event, logs in the user and loads a new scene upon success
     private void OnSubmitUsernameClicked()
     {
         username = usernameField.text;
@@ -59,6 +61,7 @@ public class ChangeUsernameButtonHandler : MonoBehaviour
         }
     }
 
+// Closes the login dialog and removes the animation class
     private void OnCloseDialogButtonClicked()
     {
         loginDialog.RemoveFromClassList("login-dialog--down");

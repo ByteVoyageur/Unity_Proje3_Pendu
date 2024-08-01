@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
-using DG.Tweening;
 
 namespace Pendu.GameStart{
 public class WordMatcher : MonoBehaviour
@@ -19,6 +18,7 @@ public class WordMatcher : MonoBehaviour
     private MatchResultManager matchResultManager;
     private KeyboardStatusManager keyboardStatusManager;
 
+// set up UI components and initialize managers when the object is enabled
     void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -43,6 +43,7 @@ public class WordMatcher : MonoBehaviour
         UpdateWordLabel();
     }
 
+// initialize the game with a new word and its normalized version
     public void Initialize(string word)
     {
         Initialize(word, WordNormalizer.NormalizeString(word));
@@ -81,6 +82,7 @@ public class WordMatcher : MonoBehaviour
         return matched;
     }
 
+// update the word label in the UI, revealing correct letters or showing underscores
     public void UpdateWordLabel(bool showAllLetters = false)
     {
         wordLabel.Clear();
