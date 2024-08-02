@@ -4,4 +4,5 @@
 ![Screen shot](./hangman-login-input.png)
 ![Screen shot](./hangman-login-menu-username-setting.png)
 ![Screen shot](./hangman-game-page.png)
+![Screen shot of game](./hangman-game-process.png)
  
