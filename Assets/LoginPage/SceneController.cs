@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour
 {
     private VisualElement root;
 
+    // Initializes the UI and sets up button click event listeners
     void OnEnable()
     {
         var uiDocument = GetComponent<UIDocument>();
@@ -23,6 +24,7 @@ public class SceneController : MonoBehaviour
         playButton.clicked += OnPlayButtonClicked;
     }
 
+    // Handles the play button click event and loads a new scene if the user is logged in
     public void OnPlayButtonClicked()
     {
         if (PlayerPrefs.GetInt("IsLoggedIn") == 1)

@@ -13,6 +13,7 @@ public class LoginManager : MonoBehaviour
     public int winCount = 0;
     public int loseCount = 0;
 
+// Initializes the instance of the LoginManager and ensures it's not destroyed on load
     void Awake()
     {
         if (instance == null)
@@ -28,6 +29,7 @@ public class LoginManager : MonoBehaviour
         }
     }
 
+// Logs in using hardware ID and handles the success or error through callbacks
     public void LoginWithHardwareID(string hardwareID, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
         isDirectLogin = true; 
@@ -47,6 +49,7 @@ public class LoginManager : MonoBehaviour
         );
     }
 
+// Logs in using custom ID and handles the success or error through callbacks
         public void LoginWithCustomID(string customID, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
         isDirectLogin = false; 
@@ -66,6 +69,7 @@ public class LoginManager : MonoBehaviour
         );
     }
 
+ // Updates the user's display name and handles the success or error through callbacks
     public void UpdateDisplayName(string newDisplayName, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
         var request = new UpdateUserTitleDisplayNameRequest
@@ -85,21 +89,25 @@ public class LoginManager : MonoBehaviour
         );
     }
 
+// Returns whether the login is direct
     public bool IsDirectLogin()
     {
         return isDirectLogin;
     }
 
+// Sets the username for the user
     public void SetUsername(string username)
     {
         this.username = username;
     }
 
+// Gets the username of the user
     public string GetUsername()
     {
         return username;
     }
 
+// Saves user statistics (win and lose counts) and handles the success or error through callbacks
         public void SaveUserStats(int winCount, int loseCount, System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
         var request = new UpdateUserDataRequest
@@ -123,6 +131,7 @@ public class LoginManager : MonoBehaviour
         );
     }
 
+ // Loads user statistics (win and lose counts) and handles the success or error through callbacks
     public void LoadUserStats(System.Action onSuccess = null, System.Action<PlayFabError> onError = null)
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest(),

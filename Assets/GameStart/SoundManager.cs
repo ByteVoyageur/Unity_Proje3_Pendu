@@ -2,6 +2,10 @@ using UnityEngine;
 
 
 namespace Pendu.GameStart{
+    /// <summary>
+    /// Manages sound effects for the game.
+    /// Provides methods to play fifferent game sounds such as winning, losing, clicks, and more.
+    /// </summary>
 public class SoundManager : MonoBehaviour
 {
     public AudioClip errorClickSound;

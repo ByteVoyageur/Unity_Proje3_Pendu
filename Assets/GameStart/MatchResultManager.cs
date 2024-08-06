@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Pendu.GameStart{
+    /// <summary>
+    /// Manages the results of the word matching game, including handing success and failure.
+    /// </summary>
 public class MatchResultManager : MonoBehaviour
 {
     private VisualElement resultContainer;
@@ -20,6 +23,7 @@ public class MatchResultManager : MonoBehaviour
     private int currentAttempts = 0;
     public bool isGameRunning = false;
 
+// Initialezes components and event handlers
     void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -42,6 +46,7 @@ public class MatchResultManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
     }
 
+// when the script is disabledm clean up event handlers.
     private void OnDisable()
     {
         wordMatcher.OnWordMatched -= HandleWordMatched;
@@ -62,6 +67,7 @@ public class MatchResultManager : MonoBehaviour
         }
     }
 
+// Updates the count of failed atte;pts and handles the game failure condition.
     public void UpdateFailedAttempts()
     {
         if (isGameRunning)
@@ -82,6 +88,7 @@ public class MatchResultManager : MonoBehaviour
         }
     }
 
+// Displays the success message and updates UI styles.
     private void ShowSuccess()
     {
         successLabel.style.display = DisplayStyle.Flex;
@@ -89,6 +96,7 @@ public class MatchResultManager : MonoBehaviour
         successLabel.style.color = Color.green;
     }
 
+// Displays the failure message and updates UI styles.
     private void ShowFailure()
     {
         successLabel.style.display = DisplayStyle.None;

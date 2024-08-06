@@ -3,6 +3,10 @@ using UnityEngine.UIElements;
 using Pendu.LoginPage;
 
 namespace Pendu.GameStart{
+    /// <summary>
+    /// Manages the game statistics, including win and loss counts, Updates the UI to reflect these stats
+    /// and handles loading and saving stats to PlayFab.
+    /// </summary>
 public class GameStatsManager : MonoBehaviour
 {
     private int winCount = 0;
@@ -23,6 +27,7 @@ public class GameStatsManager : MonoBehaviour
         LoadStats();
     }
 
+//Updates the score win.
     public void IncrementWinCount()
     {
         winCount++;
@@ -30,6 +35,7 @@ public class GameStatsManager : MonoBehaviour
         SaveStats();
     }
 
+// Updates the score loss.
     public void IncrementLoseCount()
     {
         loseCount++;
@@ -37,6 +43,7 @@ public class GameStatsManager : MonoBehaviour
         SaveStats();
     }
 
+// when called stats are successfully loaded from PlayFab, updates local counts and UI labels
     private void UpdateScoreLabels()
     {
         if (scoreWinLabel != null)
@@ -57,11 +64,13 @@ public class GameStatsManager : MonoBehaviour
         UpdateScoreLabels();
     }
 
+// Initiates the loading of the user stats from PlayFab throuth LoginManager.
     private void LoadStats()
     {
         LoginManager.instance.LoadUserStats(OnStatsLoaded);
     }
 
+// Initiates the saving of the current user stats to PlayFab through LoginManager.
     private void SaveStats()
     {
         LoginManager.instance.SaveUserStats(winCount, loseCount);

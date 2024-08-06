@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Pendu.GameStart{
+    /// <summary>
+    /// Manages the animation of the hangman parts, showing parts progressively as the game advances
+    /// and resetting the animatin when a new game starts. Plays sound effects when parts are shown.
+    /// </summary>
 public class HangmanAnimator : MonoBehaviour
 {
     private VisualElement[] hangmanParts;
@@ -10,6 +14,7 @@ public class HangmanAnimator : MonoBehaviour
     // Public reference to SoundManager
     public SoundManager soundManager;
 
+// When the script is enabled, initializes hangman parts and the SoundManager instance.
     void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -31,6 +36,7 @@ public class HangmanAnimator : MonoBehaviour
         ResetAnimation();
     }
 
+// Resets the hangman animation by hiding all parts and resetting the part index.
     public void ResetAnimation()
     {
         currentPartIndex = 0;
@@ -45,6 +51,7 @@ public class HangmanAnimator : MonoBehaviour
         }
     }
 
+// shows the next part of the hangman in sequence and plays a sound effect.
     public void ShowNextPart()
     {
         if (currentPartIndex < hangmanParts.Length)

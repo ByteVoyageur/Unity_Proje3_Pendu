@@ -1,0 +1,67 @@
+{
+  "source_base_path": "C:/Users/Bi/Unity_projet/Unity_Proje3_Pendu/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation_content/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation_content/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "documentation_content/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "documentation_content/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "documentation_content/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "documentation_content/toc.html"
+        },
+        ".json": {
+          "relative_path": "documentation_content/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

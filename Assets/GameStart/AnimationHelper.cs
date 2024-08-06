@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Pendu.GameStart{
+    /// <summary>
+    /// Provides helper methods for applying animations to UI elements , specifically
+    /// animations for letters that have been matched in the word guessing game.
+    /// </summary>
 public static class AnimationHelper
 {
     public static void ApplyMatchedLetterAnimations(Label wordLabel, MonoBehaviour monoBehaviour)

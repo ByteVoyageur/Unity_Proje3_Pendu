@@ -3,29 +3,23 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Pendu.GameStart{
+    /// <summary>
+    /// Manages the status of the on-screen keyboard, including enabling/disabling buttons,
+    /// updating button statuses, and resetting the keyboard state.
+    /// </summary>
 public class KeyboardStatusManager : MonoBehaviour
 {
     private VisualElement keyboardContainer;
 
     public event Action<Button> OnButtonUsed;
 
+// Initializes the keyboard container and button event handlers.
     void OnEnable()
     {
         var uiDocument = GetComponent<UIDocument>();
-        if (uiDocument == null)
-        {
-            Debug.LogError("No UIDocument component found!");
-            return;
-        }
 
         VisualElement root = uiDocument.rootVisualElement;
         keyboardContainer = root.Q<VisualElement>("KeyboardButtons");
-
-        if (keyboardContainer == null)
-        {
-            Debug.LogError("No keyboard container found!");
-            return;
-        }
 
         foreach (VisualElement element in keyboardContainer.Children())
         {
@@ -40,6 +34,7 @@ public class KeyboardStatusManager : MonoBehaviour
         }
     }
 
+//Updates the status of a fiven button to mark it as used.
     private void UpdateButtonStatus(Button button)
     {
         if (button.ClassListContains("used-button"))
@@ -51,14 +46,9 @@ public class KeyboardStatusManager : MonoBehaviour
         button.AddToClassList("used-button");
     }
 
+// Resets the status of the keyboard, clearing the "used" status from all buttons.
     public void ResetKeyboardStatus()
     {
-        if (keyboardContainer == null)
-        {
-            Debug.LogError("No keyboard container found!");
-            return;
-        }
-
         foreach (VisualElement element in keyboardContainer.Children())
         {
             if (element is Button button && button.ClassListContains("used-button"))
@@ -69,6 +59,7 @@ public class KeyboardStatusManager : MonoBehaviour
         }
     }
 
+//Disables all the buttons on the keyboard except "next-button" and "return-button".
     public void DisableKeyboard()
     {
         foreach (VisualElement element in keyboardContainer.Children())

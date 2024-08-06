@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
     private Button settings;
     private Label userNameLabel;
 
+// Initializes the UI elements, sound manager, and sets up button click event listeners
     void OnEnable()
     {
         // Find the SoundManager
@@ -53,6 +54,7 @@ public class MenuController : MonoBehaviour
         settings.clicked += OnSettingsClicked;
     }
 
+// Handles the start button click event, plays the click sound, and switches the UI to the game start screen
     public void OnDisable()
     {
         startButton.clicked -= OnStartButtonClicked;
